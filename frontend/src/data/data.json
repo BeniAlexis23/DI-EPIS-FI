@@ -1,0 +1,127 @@
+{
+  "Header": {
+    "title": "Feliz Día del Ingeniero",
+    "paragraph": "Conmemoración por el Día del Ingeniero por parte de la Escuela Profesional de Ingeniería de Sistemas de la UNDC. - 05/06/2025"
+  },
+  "About": {
+    "paragraph": "El 8 de junio se celebra en el Perú el Día del Ingeniero, una fecha especial para reconocer la labor de los profesionales que, con creatividad, conocimiento y compromiso, contribuyen al desarrollo del país. En este día se rinde homenaje a quienes, desde las diversas ramas de la ingeniería, impulsan soluciones innovadoras y construyen un futuro más sostenible y tecnológico. Al igual que el año pasado, el día 05 de Junio del 2025, la Escuela Profesional de Ingeniería de Sistemas de la UNDC llevará a cabo un evento de conmemoración dirigido a docentes, estudiantes, egresados y personal administrativo, reafirmando su compromiso con la excelencia y el orgullo sistémico.",
+    "Why": [
+      "Ceremonia de conmemoración.",
+      "Ponencias especializadas."
+    ],
+    "Why2": [
+      "Reconocimientos.",
+      "Deportes."
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/1.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/2.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/3.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/4.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/5.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/6.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/7.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/8.jpg"
+    },
+    {
+      "title": "Project Title",
+      "smallImage": "img/portfolio/9.jpg"
+    }
+  ],
+  "Services": [
+    {
+      "icon": "fa fa-file",
+      "name": "Recepción de Asistnetes",
+      "text": "08:30 am - 09:30 am - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-graduation-cap",
+      "name": "Ceremonia Apertura",
+      "text": "09:30 am - 10:00 am - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-lock",
+      "name": "Conferencia sobre Ciberseguridad",
+      "text": "10:00 am - 11:00 am - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-users",
+      "name": "Capacitación Habilidades del Futuro",
+      "text": "11:00 am - 12:00 pm - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-coffee",
+      "name": "Break",
+      "text": "12:00 pm - 12:15 pm - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-shield",
+      "name": "Presentación del Logo de la FI",
+      "text": "12:15 pm - 12:30 pm - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-user-plus",
+      "name": "Reconocimiento a Ingenieros destacados de Cañete",
+      "text": "12:30 pm - 1:30 pm - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-futbol-o",
+      "name": "Tarde Deportiva",
+      "text": "2:30 pm - 08:00 pm - Campo Deportivo del Fundo Don Luis."
+    }
+  ],
+  "Team": [
+    {
+      "img": "img/team/01.png",
+      "name": "Ph.D. Dulio Oseda Gago",
+      "job": "Coordinador de la Facultad de Ingeniería"
+    },
+    {
+      "img": "img/team/02.png",
+      "name": "Dr. Wagner Vicente Ramos",
+      "job": "Responsable de la Escuela Profesional de Ingeniería de Sistemas"
+    },
+    {
+      "img": "img/team/03.png",
+      "name": "Dr. Guido Larico Uchamaco",
+      "job": "Responsable del Departamento Académico de Ingeniería de Sistemas"
+    },
+    {
+      "img": "img/team/04.png",
+      "name": "Dra. Amanda Duran Carhuamaca",
+      "job": "Responsable de la Unidad de Investigación de la Facultad de Ingeniería"
+    }
+  ],
+  "Contact": {
+    "address": "Av. Mariscal Benavides N° 322 - San Vicente de Cañete ",
+    "phone": "+51 949226908",
+    "email": "dsistemas@undc.edu.pe",
+    "facebook": "https://www.facebook.com/FIUNDC",
+    "twitter": "#",
+    "youtube": "#"
+  }
+}
