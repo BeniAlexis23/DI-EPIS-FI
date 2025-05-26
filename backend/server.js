@@ -50,7 +50,12 @@ app.post("/api/contacto", async (req, res) => {
     }
 });
 
+// Servir frontend (React build) como archivos estáticos
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
+});
 
 // Iniciar servidor en el puerto definido o por defecto 5000
 const PORT = process.env.PORT || 5000;
