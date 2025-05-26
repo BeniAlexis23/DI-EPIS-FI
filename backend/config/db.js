@@ -13,8 +13,7 @@ const sequelize = new Sequelize(
     define: {
       charset: "utf8mb4",
       collate: "utf8mb4_unicode_ci",
-    },
-    logging: false, // opcional: desactiva logs de SQL
+    }
   }
 );
 
