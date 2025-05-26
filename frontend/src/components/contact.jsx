@@ -40,7 +40,7 @@ export const Contact = (props) => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/contacto" /* API produccion: "" */ , {
+      const response = await fetch("https://api-formulario.episundc.pe/api/contacto" /* API produccion: "" */ , {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
