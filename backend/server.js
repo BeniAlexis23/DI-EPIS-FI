@@ -1,4 +1,7 @@
+require('dotenv').config(); // ← debe ir antes que cualquier uso de process.env
+
 const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -13,7 +16,7 @@ app.use(bodyParser.json());
 (async () => {
     try {
         await sequelize.authenticate();
-        console.log("✅ DB is connect");
+        console.log("✅ DB is connected");
 
         await sequelize.sync(); // Crea tablas si no existen
         console.log("📦 Tablas sincronizadas correctamente");
@@ -23,7 +26,7 @@ app.use(bodyParser.json());
 })();
 
 // Ruta para guardar contacto
-app.post("/api/contacto" /*API produccion: " " */, async (req, res) => {
+app.post("/api/contacto", async (req, res) => {
     console.log("📨 Datos recibidos desde el formulario:", req.body);
     try {
         const existe = await Contacto.findOne({
@@ -31,9 +34,9 @@ app.post("/api/contacto" /*API produccion: " " */, async (req, res) => {
         });
 
         if (existe) {
-            return res
-                .status(409)
-                .json({ message: "Este estudiante ya está registrado." });
+            return res.status(409).json({
+                message: "Este estudiante ya está registrado.",
+            });
         }
 
         const nuevoContacto = await Contacto.create(req.body);
@@ -47,7 +50,15 @@ app.post("/api/contacto" /*API produccion: " " */, async (req, res) => {
     }
 });
 
-// Iniciar servidor
-app.listen(5000, () => {
-    console.log("🚀 Servidor backend corriendo en http://localhost:5000");
+// Servir frontend (React build) como archivos estáticos
+app.use(express.static(path.join(__dirname, "../frontend/build")));
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../frontend/build", "index.html"));
+});
+
+// Iniciar servidor en el puerto definido o por defecto 5000
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+    console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
 });
