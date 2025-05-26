@@ -58,7 +58,7 @@ app.post("/api/contacto", async (req, res) => {
 //});
 
 // Iniciar servidor en el puerto definido o por defecto 5000
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
 });
