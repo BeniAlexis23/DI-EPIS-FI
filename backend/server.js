@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 // Verificar conexión a la base de datos
 (async () => {
     try {
-        await sequelize.authenticate(); // Verifica conexión
+        await sequelize.authenticate();
         console.log("✅ DB is connect");
 
         await sequelize.sync(); // Crea tablas si no existen
