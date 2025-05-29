@@ -39,8 +39,18 @@ export const Contact = (props) => {
       return;
     }
 
+    // Validación extra: celular debe tener exactamente 9 dígitos
+    if (!/^\d{9}$/.test(formData.phone)) {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Número inválido',
+        text: 'El número de celular debe tener exactamente 9 dígitos.',
+      });
+      return;
+    }
+
     try {
-      const response = await fetch("https://api-formulario.episundc.pe/api/contacto" /* API produccion: "https://api-formulario.episundc.pe/api/contacto" */ , {
+      const response = await fetch("https://api-formulario.episundc.pe/api/contacto" /* API produccion: "https://api-formulario.episundc.pe/api/contacto" */, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -177,8 +187,14 @@ export const Contact = (props) => {
                         className="form-control"
                         placeholder="Celular"
                         required
+                        maxLength={9}
                         value={formData.phone}
-                        onChange={handleChange}
+                        onChange={(e) => {
+                          const value = e.target.value;
+                          if (/^\d{0,9}$/.test(value)) {
+                            setFormData((prev) => ({ ...prev, phone: value }));
+                          }
+                        }}
                       />
                       <p className="help-block text-danger"></p>
                     </div>
