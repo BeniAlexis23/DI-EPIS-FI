@@ -1,60 +1,49 @@
-body,
-
+html,
 body {
-  overflow-x: hidden;
-}
-
-#header .intro {
+  margin: 0;
+  padding: 0;
   width: 100%;
-  overflow-x: hidden;
-}
-
-#header .overlay {
-  width: 100%;
-  margin-top: -30px;
-  padding-bottom: 50px;
   max-width: 100vw;
   overflow-x: hidden;
 }
 
-.navbar {
-  max-width: 100vw;
-  overflow-x: hidden;
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-.navbar-brand img {
+/* Asegura que ninguna imagen ni iframe se desborde */
+img,
+video,
+iframe {
   max-width: 100%;
   height: auto;
+  display: block;
+}
+
+/* Forzar columnas y contenedores a adaptarse */
+.container,
+.row,
+.col-md-*,
+.col-sm-*,
+.col-xs-* {
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 #header h1 {
-  font-size: 60px;
-  line-height: 1.2;
-  font-weight: bold;
+  font-size: 64px;
   word-break: break-word;
-  margin-bottom: 20px;
-  text-transform: uppercase;
 }
 
-/* Tablet (hasta 768px) */
 @media (max-width: 768px) {
   #header h1 {
-    font-size: 32px;
+    font-size: 36px;
   }
 
   #header p {
-    font-size: 16px;
-  }
-}
-
-/* Celular (hasta 480px, como tu caso 425px) */
-@media (max-width: 480px) {
-  #header h1 {
-    font-size: 50px;
-  }
-
-  #header p {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .btn-custom {
@@ -63,17 +52,17 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  #header h1 {
+    font-size: 28px;
+  }
 
-
-html {
-  font-family: "Open Sans", sans-serif;
-  text-rendering: optimizeLegibility !important;
-  -webkit-font-smoothing: antialiased !important;
-  color: #777;
-  font-weight: 400;
-  width: 100% !important;
-  height: 100% !important;
+  #header p {
+    font-size: 16px;
+  }
 }
+
+/* General Styles */
 
 h2,
 h3,
@@ -391,7 +380,10 @@ header .intro-text {
 }
 
 #about img {
-  width: 520px;
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+  display: block;
   margin-top: 10px;
   background: #fff;
   border-right: 0;
@@ -401,6 +393,18 @@ header .intro-text {
 #about p {
   line-height: 24px;
   margin: 30px 0;
+}
+
+@media (max-width: 375px) {
+  #about {
+    padding-right: 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  #about {
+    padding-right: 35px;
+  }
 }
 
 /* Services Section */
@@ -454,14 +458,26 @@ header .intro-text {
   margin-bottom: 40px;
 }
 
+@media (max-width: 375px) {
+  #services {
+    padding-right: 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  #services {
+    padding-right: 35px;
+  }
+}
+
 /* Portfolio Section */
 #portfolio {
   padding: 100px 0;
 }
 
 .portfolio-item {
-  margin: 1px -15px 0 -14px;
-  padding: 0;
+  margin: 1px 0;
+  padding: 0 15px;
 }
 
 .portfolio-item .hover-bg {
@@ -508,6 +524,18 @@ header .intro-text {
   opacity: 1;
 }
 
+@media (max-width: 375px) {
+  #portfolio {
+    padding-right: 29px;
+  }
+}
+
+@media (max-width: 320px) {
+  #portfolio {
+    padding-right: 29px;
+  }
+}
+
 /* Team Section */
 #team {
   padding: 100px 0;
@@ -530,6 +558,18 @@ header .intro-text {
 #team .thumbnail .caption {
   padding: 10px 0 0;
   color: #888;
+}
+
+@media (max-width: 375px) {
+  #team {
+    padding-right: 29px;
+  }
+}
+
+@media (max-width: 320px) {
+  #team {
+    padding-right: 29px;
+  }
 }
 
 /* Contact Section */
@@ -682,6 +722,18 @@ label {
   background: #fff;
 }
 
+@media (max-width: 375px) {
+  #contact {
+    padding-right: 35px;
+  }
+}
+
+@media (max-width: 320px) {
+  #contact {
+    padding-right: 30px;
+  }
+}
+
 /* Footer Section*/
 #footer {
   background: #f6f6f6;
@@ -699,6 +751,17 @@ label {
 
 #footer a:hover {
   border-bottom: 2px solid #608dfd;
+}
+@media (max-width: 375px) {
+  #footer {
+    padding-right: 29px;
+  }
+}
+
+@media (max-width: 320px) {
+  #footer {
+    padding-right: 29px;
+  }
 }
 
 @media (max-width: 768px) {
