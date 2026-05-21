@@ -244,11 +244,11 @@ export const Contact = (props) => {
                       >
                         <option value="">Seleccione su ciclo académico</option>
                         <option value="I">I</option>
+                        <option value="II">II</option>
                         <option value="III">III</option>
                         <option value="V">V</option>
                         <option value="VII">VII</option>
                         <option value="IX">IX</option>
-                        <option value="X">X</option>
                       </select>
                       <p className="help-block text-danger"></p>
                     </div>

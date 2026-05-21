@@ -7,7 +7,7 @@ export const Gallery = (props) => {
         <div className="section-title">
           <h2>Galería de Fotos</h2>
           <p>
-            Recordemos los mejores momentos de la Facultad de Ingeniería conmemorando el Día del Ingeniero 2024.
+            Recordemos los mejores momentos de la Facultad de Ingeniería conmemorando el Día del Ingeniero 2025.
           </p>
         </div>
         <div className="row">

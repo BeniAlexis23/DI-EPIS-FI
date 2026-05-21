@@ -17,39 +17,39 @@
   "Gallery": [
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/1.jpg"
+      "smallImage": "img/portfolio/1.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/2.jpg"
+      "smallImage": "img/portfolio/2.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/3.jpg"
+      "smallImage": "img/portfolio/3.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/4.jpg"
+      "smallImage": "img/portfolio/4.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/5.png"
+      "smallImage": "img/portfolio/5.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/6.jpg"
+      "smallImage": "img/portfolio/6.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/7.jpg"
+      "smallImage": "img/portfolio/7.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/8.jpg"
+      "smallImage": "img/portfolio/8.webp"
     },
     {
       "title": "Project Title",
-      "smallImage": "img/portfolio/9.jpg"
+      "smallImage": "img/portfolio/9.webp"
     }
   ],
   "Services": [
