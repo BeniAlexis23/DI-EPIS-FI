@@ -1,7 +1,7 @@
 {
   "Header": {
     "title": "Feliz Día del Ingeniero",
-    "paragraph": "Conmemoración por el Día del Ingeniero por parte de la Escuela Profesional de Ingeniería de Sistemas de la UNDC. - 05/06/2025"
+    "paragraph": "Conmemoración por el Día del Ingeniero por parte de la Escuela Profesional de Ingeniería de Sistemas de la UNDC. - 10/06/2026"
   },
   "About": {
     "paragraph": "El 8 de junio se celebra en el Perú el Día del Ingeniero, una fecha especial para reconocer la labor de los profesionales que, con creatividad, conocimiento y compromiso, contribuyen al desarrollo del país. En este día se rinde homenaje a quienes, desde las diversas ramas de la ingeniería, impulsan soluciones innovadoras y construyen un futuro más sostenible y tecnológico. Al igual que el año pasado, el día 05 de Junio del 2025, la Escuela Profesional de Ingeniería de Sistemas de la UNDC llevará a cabo un evento de conmemoración dirigido a docentes, estudiantes, egresados y personal administrativo, reafirmando su compromiso con la excelencia y el orgullo sistémico.",
@@ -56,42 +56,37 @@
     {
       "icon": "fa fa-file",
       "name": "Recepción de Asistentes",
-      "text": "08:30 am - 09:30 am - Auditorio de la Casa de la Cultura."
+      "text": "08:30 am - 09:00 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-graduation-cap",
-      "name": "Ceremonia Apertura",
-      "text": "09:30 am - 10:00 am - Auditorio de la Casa de la Cultura."
+      "name": "Ceremonia Central por el Día del Ingeniero",
+      "text": "09:00 am - 09:30 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-lock",
-      "name": "Conferencia sobre Ciberseguridad",
-      "text": "10:00 am - 11:00 am - Auditorio de la Casa de la Cultura."
+      "name": "Conferencia Magistral sobre Tecnología",
+      "text": "09:30 am - 10:30 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-users",
-      "name": "Capacitación Habilidades del Futuro",
-      "text": "11:00 am - 12:00 pm - Auditorio de la Casa de la Cultura."
+      "name": "Break",
+      "text": "10:30 am - 10:50 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-coffee",
-      "name": "Break",
-      "text": "12:00 pm - 12:15 pm - Auditorio de la Casa de la Cultura."
+      "name": "Conferencia sobre Habilidades Blandas",
+      "text": "10:50 am - 11:50 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-shield",
-      "name": "Presentación del Logo de la FI",
-      "text": "12:15 pm - 12:30 pm - Auditorio de la Casa de la Cultura."
-    },
-    {
-      "icon": "fa fa-user-plus",
-      "name": "Reconocimiento a Ingenieros destacados de Cañete",
-      "text": "12:30 pm - 1:30 pm - Auditorio de la Casa de la Cultura."
+      "name": "Clausura del Evento Académico",
+      "text": "11:50 am - 12:05 pm - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-futbol-o",
-      "name": "Tarde Deportiva",
-      "text": "2:30 pm - 08:00 pm - Campo Deportivo del Fundo Don Luis."
+      "name": "Camperonato Deportivo",
+      "text": "2:00 pm - 08:00 pm - Campo Deportivo del Fundo Don Luis."
     }
   ],
   "Team": [
@@ -106,8 +101,8 @@
       "job": "Responsable de la Escuela Profesional de Ingeniería de Sistemas"
     },
     {
-      "img": "img/team/03.png",
-      "name": "Dr. Guido Larico Uchamaco",
+      "img": "img/team/03.webp  ",
+      "name": "Ph.D. Edwin Roque Tito",
       "job": "Responsable del Departamento Académico de Ingeniería de Sistemas"
     },
     {
