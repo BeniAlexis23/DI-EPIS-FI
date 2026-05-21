@@ -1,4 +1,45 @@
-export const Navigation = (props) => {
+import { useEffect } from "react";
+
+const trackedSections = ["about", "services", "portfolio", "team"];
+
+export const Navigation = () => {
+  useEffect(() => {
+    const applyActiveSection = () => {
+      const current = trackedSections.reduce((active, sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (!section) return active;
+
+        const sectionTop = section.offsetTop - 120;
+        return window.scrollY >= sectionTop ? sectionId : active;
+      }, "");
+
+      const contactSection = document.getElementById("contact");
+      const isContactVisible = contactSection && window.scrollY >= contactSection.offsetTop - 160;
+
+      document.querySelectorAll("#menu .navbar-nav li.active").forEach((item) => {
+        item.classList.remove("active");
+      });
+
+      if (current && !isContactVisible) {
+        const activeLink = document.querySelector(`#menu .navbar-nav a[href="#${current}"]`);
+        activeLink?.parentElement?.classList.add("active");
+      }
+    };
+
+    const updateActiveSection = () => {
+      window.requestAnimationFrame(applyActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
+  }, []);
+
   return (
     <nav id="menu" className="navbar navbar-default navbar-fixed-top">
       <div className="container">
@@ -37,7 +78,7 @@ export const Navigation = (props) => {
             </li>
             <li>
               <a href="#services" className="page-scroll">
-                ACtividades
+                Actividades
               </a>
             </li>
             <li>
@@ -61,3 +102,4 @@ export const Navigation = (props) => {
     </nav>
   );
 };
+

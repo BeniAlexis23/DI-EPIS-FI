@@ -5,18 +5,24 @@ export const Header = (props) => {
         <div className="overlay">
           <div className="container">
             <div className="row">
-              <div className="col-md-8 col-md-offset-2 intro-text">
+              <div className="col-md-10 col-md-offset-1 intro-text">
                 <h1>
-                  {props.data ? props.data.title : "Loading"}
-                  <span></span>
+                  <span className="hero-title-light">Feliz día del</span>
+                  <span className="hero-title-strong">Ingeniero</span>
                 </h1>
-                <p>{props.data ? props.data.paragraph : "Loading"}</p>
-                <a
-                  href="#contact"
-                  className="btn btn-custom btn-lg page-scroll"
-                >
+                <p className="hero-copy">
+                  {props.data
+                    ? props.data.paragraph
+                    : "Honrando a quienes transforman ideas en soluciones."}
+                </p>
+                <a href="#contact" className="btn btn-custom btn-lg page-scroll">
                   Registro
-                </a>{" "}
+                </a>
+                <div className="hero-glass-grid" aria-hidden="true">
+                  <div className="hero-glass-card hero-glass-card-one"></div>
+                  <div className="hero-glass-card hero-glass-card-two"></div>
+                  <div className="hero-glass-card hero-glass-card-three"></div>
+                </div>
               </div>
             </div>
           </div>
@@ -25,3 +31,5 @@ export const Header = (props) => {
     </header>
   );
 };
+
+

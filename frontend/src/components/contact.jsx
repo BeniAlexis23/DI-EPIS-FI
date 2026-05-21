@@ -1,6 +1,51 @@
 import { useState } from "react";
 import Swal from 'sweetalert2';
 
+const requiredFieldLabels = {
+  codEstudiante: "Código de estudiante",
+  name: "Nombres completos",
+  lastnamePaterno: "Apellido paterno",
+  lastnameMaterno: "Apellido materno",
+  phone: "Celular",
+  email: "Correo institucional",
+  ciclo: "Ciclo académico",
+  message: "Expectativa del evento",
+};
+
+const sanitizeFormData = (data) => ({
+  codEstudiante: data.codEstudiante.trim(),
+  name: data.name.trim(),
+  lastnamePaterno: data.lastnamePaterno.trim(),
+  lastnameMaterno: data.lastnameMaterno.trim(),
+  phone: data.phone.trim(),
+  email: data.email.trim().toLowerCase(),
+  ciclo: data.ciclo.trim(),
+  message: data.message.trim(),
+});
+
+const getValidationMessage = (data) => {
+  const missingFields = Object.entries(requiredFieldLabels)
+    .filter(([field]) => !data[field])
+    .map(([, label]) => label);
+
+  if (missingFields.length > 0) {
+    return `Completa todos los campos requeridos: ${missingFields.join(", ")}.`;
+  }
+
+  if (!/^\d{10}$/.test(data.codEstudiante)) {
+    return "El código de estudiante debe tener exactamente 10 dígitos.";
+  }
+
+  if (!/^\d{9}$/.test(data.phone)) {
+    return "El número de celular debe tener exactamente 9 dígitos.";
+  }
+
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+    return "Ingresa un correo válido.";
+  }
+
+  return null;
+};
 const initialState = {
   codEstudiante: "",
   name: "",
@@ -27,24 +72,14 @@ export const Contact = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validación extra: codEstudiante debe tener exactamente 10 dígitos numéricos
-    if (!/^\d{10}$/.test(formData.codEstudiante)) {
+    const sanitizedData = sanitizeFormData(formData);
+    const validationMessage = getValidationMessage(sanitizedData);
 
+    if (validationMessage) {
       Swal.fire({
         icon: 'warning',
-        title: 'Código inválido',
-        text: 'El código de estudiante debe tener exactamente 10 dígitos.',
-      });
-
-      return;
-    }
-
-    // Validación extra: celular debe tener exactamente 9 dígitos
-    if (!/^\d{9}$/.test(formData.phone)) {
-      Swal.fire({
-        icon: 'warning',
-        title: 'Número inválido',
-        text: 'El número de celular debe tener exactamente 9 dígitos.',
+        title: 'Revisa el formulario',
+        text: validationMessage,
       });
       return;
     }
@@ -55,7 +90,7 @@ export const Contact = (props) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(sanitizedData),
       });
 
       const result = await response.json();
@@ -102,7 +137,7 @@ export const Contact = (props) => {
                   Completa el siguiente formulario para registrarte al evento. Recibirás un correo de confirmación con los detalles del evento. <br /> <br />Recuerda que los datos ingresados deben ser válidos y reales, ya que serán utilizados para la entrega de certificados.
                 </p>
               </div>
-              <form name="sentMessage" validate onSubmit={handleSubmit}>
+              <form name="sentMessage" onSubmit={handleSubmit}>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
@@ -294,10 +329,12 @@ export const Contact = (props) => {
       <div id="footer">
         <div className="container text-center">
           <p>
-            &copy; 2025 Facultad de Ingeniería - UNDC
+            &copy; 2026 Facultad de Ingeniería - UNDC
           </p>
         </div>
       </div>
     </div>
   );
 };
+
+
