@@ -1,7 +1,12 @@
-export const Image = ({ title, smallImage }) => {
+export const Image = ({ title, smallImage, onOpen }) => {
   return (
     <article className="gallery-card reveal-scroll-item">
-      <div className="gallery-card-media">
+      <button
+        type="button"
+        className="gallery-card-media"
+        onClick={onOpen}
+        aria-label={`Ver foto ${title}`}
+      >
         <img
           src={smallImage}
           className="img-responsive"
@@ -9,7 +14,7 @@ export const Image = ({ title, smallImage }) => {
           loading="lazy"
         />
         <div className="gallery-card-overlay" aria-hidden="true"></div>
-      </div>
+      </button>
     </article>
   );
 };
