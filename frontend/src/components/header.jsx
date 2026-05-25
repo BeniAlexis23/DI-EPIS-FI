@@ -5,7 +5,12 @@ export const Header = (props) => {
         <div className="overlay">
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-md-offset-1 intro-text">
+              <div className="col-md-12 intro-text">
+                {props.data && props.data.date && (
+                  <div className="hero-date-badge">
+                    <i className="fa fa-calendar" aria-hidden="true"></i> {props.data.date}
+                  </div>
+                )}
                 <h1>
                   <span className="hero-title-light">Feliz día del</span>
                   <span className="hero-title-strong">Ingeniero</span>

@@ -1,4 +1,100 @@
+/* ==========================================
+   DISEÑO DE FECHA EN HERO
+   ========================================== */
+.hero-date-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(10, 22, 37, 0.7);
+  border: 1px solid rgba(188, 209, 232, 0.25);
+  padding: 6px 16px;
+  border-radius: 50px;
+  color: #eef6ff;
+  font-family: 'Raleway', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.hero-date-badge i {
+  color: #4ea6ff;
+  font-size: 14px;
+}
+
+.intro {
+  height: 100vh !important;
+  min-height: 700px;
+  display: flex !important;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.intro .overlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro .container {
+  width: 100%;
+  max-width: 1170px;
+}
+
+header .intro-text {
+  padding-top: 130px !important;
+  margin: 0 !important;
+  text-align: center;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.intro p.hero-copy {
+  margin: 0 auto 20px !important;
+  max-width: 760px;
+}
+
+.hero-glass-grid {
+  margin-top: 25px !important;
+  width: 100% !important;
+  max-width: 920px !important;
+}
+
+/* ==========================================
+   ANIMACIONES FLUIDAS Y SIN DESPLAZAMIENTO JUMPY
+   ========================================== */
+.reveal-onload {
+  opacity: 0;
+  animation: fadeInSimple 0.6s ease-out forwards;
+}
+
+.reveal-scroll-section {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.reveal-scroll-section.is-visible {
+  opacity: 1;
+}
+
+@keyframes fadeInSimple {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   RESPONSIVIDAD Y COMPATIBILIDAD
+   ========================================== */
 @media screen and (max-width: 400px) {
+
   #about,
   #services,
   #testimonials,
@@ -7,5 +103,174 @@
   #footer,
   #portfolio {
     width: 100%;
+  }
+}
+
+/* ==========================================
+   ESTILOS DE LA BARRA DE NAVEGACIÓN (NAVBAR) EN CELULAR
+   ========================================== */
+@media screen and (max-width: 767px) {
+  #menu {
+    padding: 6px 0 !important;
+  }
+
+  #menu a.navbar-brand {
+    font-size: 13.5px !important;
+    gap: 8px !important;
+  }
+
+  #menu a.navbar-brand img {
+    height: 34px !important;
+    width: 34px !important;
+  }
+
+  .navbar-default .navbar-toggle {
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    border-color: rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff !important;
+  }
+
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+    background-color: rgba(78, 166, 255, 0.15) !important;
+    border-color: rgba(78, 166, 255, 0.5) !important;
+  }
+
+  .navbar-default .navbar-toggle:hover .icon-bar,
+  .navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #fff !important;
+  }
+
+  .navbar-collapse {
+    background: rgba(6, 16, 30, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5) !important;
+    margin-top: 8px !important;
+    border-radius: 8px;
+    padding-bottom: 15px !important;
+  }
+
+  /* Enlaces de menú en celular */
+  #menu.navbar-default .navbar-nav {
+    margin: 10px 0 0 0 !important;
+    text-align: center;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    padding: 12px 0 !important;
+    margin: 4px 15px !important;
+    color: rgba(238, 246, 255, 0.8) !important;
+    border-radius: 6px;
+    transition: background 0.3s ease, color 0.3s ease;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a:hover,
+  #menu.navbar-default .navbar-nav>li>a:focus {
+    color: #4ea6ff !important;
+    background: rgba(78, 166, 255, 0.08) !important;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a:after,
+  .navbar-default .navbar-nav>.active>a:after {
+    display: none !important;
+  }
+
+  .navbar-default .navbar-nav>.active>a {
+    color: #4ea6ff !important;
+    background: rgba(78, 166, 255, 0.1) !important;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn {
+    border: 1px solid rgba(78, 166, 255, 0.5) !important;
+    background: rgba(78, 166, 255, 0.15) !important;
+    color: #fff !important;
+    margin: 10px auto !important;
+    width: 80% !important;
+    max-width: 250px;
+    padding: 10px 20px !important;
+    display: block !important;
+    border-radius: 50px !important;
+    text-align: center;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn:hover {
+    background: #4ea6ff !important;
+    color: #06101e !important;
+  }
+
+  /* Variación móvil del botón de Deportes */
+  #menu.navbar-default .navbar-nav>li>a.nav-btn-sports {
+    border-color: rgba(240, 199, 106, 0.5) !important;
+    background: rgba(240, 199, 106, 0.15) !important;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn-sports:hover {
+    background: #f0c76a !important;
+    color: #06101e !important;
+  }
+}
+
+/* ==========================================
+   ESTILOS DE BOTONES DESTACADOS NAVBAR (DESKTOP)
+   ========================================== */
+@media screen and (min-width: 768px) {
+  #menu.navbar-default .navbar-nav>li>a.nav-btn {
+    border: 1px solid rgba(255, 255, 255, 0.35) !important;
+    border-radius: 999px !important;
+    padding: 8px 18px !important;
+    margin-top: 8px !important;
+    transition: all 0.3s ease;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn:hover {
+    background: rgba(78, 166, 255, 0.15) !important;
+    border-color: rgba(78, 166, 255, 0.6) !important;
+    color: #fff !important;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn-sports {
+    border-color: rgba(240, 199, 106, 0.5) !important;
+  }
+
+  #menu.navbar-default .navbar-nav>li>a.nav-btn-sports:hover {
+    background: rgba(240, 199, 106, 0.15) !important;
+    border-color: rgba(240, 199, 106, 0.7) !important;
+  }
+}
+
+/* ==========================================
+   INTERACCIÓN EN TARJETAS DE CRISTAL (HERO GLASS CARDS)
+   ========================================== */
+.hero-glass-card {
+  border: 1px solid rgba(78, 166, 255, 0.18) !important;
+  border-radius: 12px !important;
+  box-shadow: inset 0 0 0 999px rgba(7, 17, 31, 0.65), 0 8px 30px rgba(0, 0, 0, 0.3) !important;
+  filter: saturate(0.7) contrast(0.9) !important;
+  cursor: pointer;
+  transform: scale(1) !important;
+  transition: border-color 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    filter 0.5s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.hero-glass-card:hover {
+  border-color: rgba(78, 166, 255, 0.65) !important;
+  box-shadow: inset 0 0 0 999px rgba(7, 17, 31, 0.15), 0 15px 40px rgba(78, 166, 255, 0.22) !important;
+  filter: saturate(1.15) contrast(1.05) !important;
+  transform: scale(1.03) !important;
+}
+
+@media screen and (max-width: 767px) {
+  .hero-glass-grid {
+    display: none !important;
   }
 }
