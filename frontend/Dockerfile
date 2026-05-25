@@ -3,7 +3,8 @@ FROM node:20-alpine AS build
 
 WORKDIR /app
 
-RUN corepack enable
+# Evita que corepack instale pnpm 11 (requiere Node >= 22)
+RUN corepack enable && corepack prepare pnpm@9.15.9 --activate
 
 COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
