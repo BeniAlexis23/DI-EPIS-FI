@@ -234,14 +234,12 @@ export const SportsRegistration = () => {
                 </div>
 
                 <div
-                  className={`sports-meta-grid ${
-                    formData.type === "Estudiante" ? "sports-meta-grid--student" : ""
-                  }`}
+                  className={`sports-meta-grid ${formData.type === "Estudiante" ? "sports-meta-grid--student" : ""
+                    }`}
                 >
                   <div
-                    className={`form-group sports-meta-field ${
-                      formData.type && formData.type !== "Estudiante" ? "sports-meta-field--full" : ""
-                    }`}
+                    className={`form-group sports-meta-field ${formData.type && formData.type !== "Estudiante" ? "sports-meta-field--full" : ""
+                      }`}
                   >
                     <label htmlFor="type">Tipo</label>
                     <select
@@ -379,29 +377,32 @@ export const SportsRegistration = () => {
             <div className="registration-map-stack">
               <article className="registration-map-card contact-support-card registration-animate">
                 <div className="map-card-copy">
-                  <span>Información deportiva</span>
-                  <p>Consulta dudas sobre inscripción de equipos, horarios de participación y coordinación de partidos.</p>
+                  <span>Información de contacto</span>
+                  <p>
+                    Canales disponibles para resolver dudas sobre registro,
+                    asistencia y certificados.
+                  </p>
 
                   <div className="contact-support-list">
                     <div className="contact-support-item">
-                      <i className="fa fa-trophy" aria-hidden="true"></i>
+                      <i className="fa fa-comments-o" aria-hidden="true"></i>
                       <div>
-                        <strong>Modalidades</strong>
-                        <small>Fútbol (7+3), vóley (6+6) y básquet (5+3)</small>
+                        <strong>Consultas rápidas</strong>
+                        <small>949 026 908</small>
                       </div>
                     </div>
                     <div className="contact-support-item">
-                      <i className="fa fa-users" aria-hidden="true"></i>
+                      <i className="fa fa-clock-o" aria-hidden="true"></i>
                       <div>
-                        <strong>Equipo</strong>
-                        <small>{formatRosterSummary(formData.sport)}</small>
+                        <strong>Atención</strong>
+                        <small>Lunes a viernes, 9:00 a.m. a 5:00 p.m.</small>
                       </div>
                     </div>
                     <div className="contact-support-item">
-                      <i className="fa fa-phone" aria-hidden="true"></i>
+                      <i className="fa fa-envelope-o" aria-hidden="true"></i>
                       <div>
-                        <strong>Consultas</strong>
-                        <small>987654312</small>
+                        <strong>Correo</strong>
+                        <small>dsistemas@undc.edu.pe</small>
                       </div>
                     </div>
                   </div>
@@ -410,13 +411,13 @@ export const SportsRegistration = () => {
 
               <article className="registration-map-card registration-animate">
                 <div className="map-card-copy">
-                  <span>Ubicación principal</span>
-                  <h3>Casa de la Cultura</h3>
-                  <p>Referencia para las actividades centrales del evento.</p>
+                  <span>Ubicación</span>
+                  <h3>Lozas - Fundo Don Luis</h3>
+                  <p>Referencia para las actividades deportivas del evento.</p>
                 </div>
                 <iframe
-                  title="Mapa Casa de la Cultura"
-                  src="https://maps.google.com/maps?q=Casa%20de%20la%20Cultura%20Ca%C3%B1ete%20Per%C3%BA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  title="Mapa San Luis"
+                  src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1943.3054665428124!2d-76.4292336!3d-13.0604192!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x910ff9583848bbb5%3A0x7b7bcf73b56e822f!2sEdificaci%C3%B3n%20M%C3%BAltiple%20Universidad%20Nacional%20de%20Ca%C3%B1ete!5e0!3m2!1ses!2spe!4v1779712695044!5m2!1ses!2spe"
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 ></iframe>

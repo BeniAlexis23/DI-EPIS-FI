@@ -11,14 +11,8 @@ export const Footer = () => {
         </div>
         <div className="footer-meta">
           <div className="footer-links" aria-label="Redes sociales">
-            <a href="/" aria-label="Facebook">
+            <a href="https://www.facebook.com/fiundc" aria-label="Facebook">
               <i className="fa fa-facebook" aria-hidden="true"></i>
-            </a>
-            <a href="/" aria-label="Instagram">
-              <i className="fa fa-instagram" aria-hidden="true"></i>
-            </a>
-            <a href="/" aria-label="GitHub">
-              <i className="fa fa-github" aria-hidden="true"></i>
             </a>
           </div>
           <p>&copy; 2026 Facultad de Ingeniería - UNDC</p>

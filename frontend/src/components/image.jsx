@@ -1,10 +1,15 @@
 export const Image = ({ title, smallImage }) => {
   return (
-    <div className="portfolio-item">
-      <div className="hover-bg">
-        {" "}
-        <img src={smallImage} className="img-responsive" alt={title} />{" "}
+    <article className="gallery-card reveal-scroll-item">
+      <div className="gallery-card-media">
+        <img
+          src={smallImage}
+          className="img-responsive"
+          alt={title}
+          loading="lazy"
+        />
+        <div className="gallery-card-overlay" aria-hidden="true"></div>
       </div>
-    </div>
+    </article>
   );
 };

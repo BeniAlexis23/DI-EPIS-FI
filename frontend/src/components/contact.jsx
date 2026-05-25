@@ -154,105 +154,107 @@ export const Contact = () => {
                 <div className="form-intro">
                   <span>Datos personales</span>
                 </div>
-                <div className="row">
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="name">Nombres completos</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        className="form-control"
-                        placeholder="Nombres Completos"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="lastnamePaterno">Apellido paterno</label>
-                      <input
-                        type="text"
-                        id="lastnamePaterno"
-                        name="lastnamePaterno"
-                        className="form-control"
-                        placeholder="Apellido Paterno"
-                        required
-                        value={formData.lastnamePaterno}
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="lastnameMaterno">Apellido materno</label>
-                      <input
-                        type="text"
-                        id="lastnameMaterno"
-                        name="lastnameMaterno"
-                        className="form-control"
-                        placeholder="Apellido Materno"
-                        required
-                        value={formData.lastnameMaterno}
-                        onChange={handleChange}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
+                <div
+                  className={`registration-fields-grid ${showInstitutionalCode
+                    ? "registration-fields-grid--student"
+                    : "registration-fields-grid--publico"
+                    }`}
+                >
+                  <div className="form-group field-name">
+                    <label htmlFor="name">Nombres completos</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      className="form-control"
+                      placeholder="Nombres Completos"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                    />
                   </div>
 
-                  <div className="col-md-6">
-                    <div className="form-group">
-                      <label htmlFor="ciclo">Clasificación</label>
-                      <select
-                        id="ciclo"
-                        name="ciclo"
-                        className="form-control"
-                        required
-                        value={formData.ciclo}
-                        onChange={handleChange}
-                      >
-                        <option value="">Seleccionar clasificación</option>
-                        <option value="I CICLO">Estudiante - I</option>
-                        <option value="II CICLO">Estudiante - II</option>
-                        <option value="III CICLO">Estudiante - III</option>
-                        <option value="V CICLO">Estudiante - V</option>
-                        <option value="VII CICLO">Estudiante - VII</option>
-                        <option value="IX CICLO">Estudiante - IX</option>
-                        <option value={PUBLICO_GENERAL}>Público general</option>
-                      </select>
-                    </div>
-                    {showInstitutionalCode && (
-                      <div className="form-group">
-                        <label htmlFor="institutionalCode">
-                          Código de postulante
-                        </label>
-                        <input
-                          type="text"
-                          id="institutionalCode"
-                          name="institutionalCode"
-                          className="form-control"
-                          inputMode="numeric"
-                          autoComplete="off"
-                          placeholder="10 dígitos"
-                          required
-                          maxLength={10}
-                          value={formData.institutionalCode}
-                          onChange={handleChange}
-                        />
-                      </div>
-                    )}
-                    <div className="form-group">
-                      <label htmlFor="email">Correo</label>
+                  <div className="form-group field-ciclo">
+                    <label htmlFor="ciclo">Clasificación</label>
+                    <select
+                      id="ciclo"
+                      name="ciclo"
+                      className="form-control"
+                      required
+                      value={formData.ciclo}
+                      onChange={handleChange}
+                    >
+                      <option value="">Seleccionar clasificación</option>
+                      <option value="I CICLO">Estudiante - I</option>
+                      <option value="II CICLO">Estudiante - II</option>
+                      <option value="III CICLO">Estudiante - III</option>
+                      <option value="V CICLO">Estudiante - V</option>
+                      <option value="VII CICLO">Estudiante - VII</option>
+                      <option value="IX CICLO">Estudiante - IX</option>
+                      <option value={PUBLICO_GENERAL}>Público general</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group field-paterno">
+                    <label htmlFor="lastnamePaterno">Apellido paterno</label>
+                    <input
+                      type="text"
+                      id="lastnamePaterno"
+                      name="lastnamePaterno"
+                      className="form-control"
+                      placeholder="Apellido Paterno"
+                      required
+                      value={formData.lastnamePaterno}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  {showInstitutionalCode && (
+                    <div className="form-group field-code">
+                      <label htmlFor="institutionalCode">
+                        Código de postulante
+                      </label>
                       <input
-                        type="email"
-                        id="email"
-                        name="email"
+                        type="text"
+                        id="institutionalCode"
+                        name="institutionalCode"
                         className="form-control"
+                        inputMode="numeric"
+                        autoComplete="off"
+                        placeholder="10 dígitos"
                         required
-                        value={formData.email}
+                        maxLength={10}
+                        value={formData.institutionalCode}
                         onChange={handleChange}
                       />
                     </div>
+                  )}
+
+                  <div className="form-group field-materno">
+                    <label htmlFor="lastnameMaterno">Apellido materno</label>
+                    <input
+                      type="text"
+                      id="lastnameMaterno"
+                      name="lastnameMaterno"
+                      className="form-control"
+                      placeholder="Apellido Materno"
+                      required
+                      value={formData.lastnameMaterno}
+                      onChange={handleChange}
+                    />
+                  </div>
+
+                  <div className="form-group field-email">
+                    <label htmlFor="email">Correo</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      className="form-control"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
                   </div>
                 </div>
                 <div className="form-disclaimer">
@@ -286,7 +288,7 @@ export const Contact = () => {
                       <i className="fa fa-comments-o" aria-hidden="true"></i>
                       <div>
                         <strong>Consultas rápidas</strong>
-                        <small>Registro, horarios y participación</small>
+                        <small>949 026 908</small>
                       </div>
                     </div>
                     <div className="contact-support-item">
@@ -309,8 +311,8 @@ export const Contact = () => {
 
               <article className="registration-map-card registration-animate">
                 <div className="map-card-copy">
-                  <span>Ubicación principal</span>
-                  <h3>Casa de la Cultura</h3>
+                  <span>Ubicación</span>
+                  <h3>Auditorio - Casa de la Cultura</h3>
                   <p>Referencia para las ponencias y actividades centrales.</p>
                 </div>
                 <iframe
