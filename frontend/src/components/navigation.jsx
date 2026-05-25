@@ -91,7 +91,7 @@ export const Navigation = () => {
             </li>
             <li>
               <a href="/#speaker" className="page-scroll">
-                Ponente
+                Ponentes
               </a>
             </li>
             <li>

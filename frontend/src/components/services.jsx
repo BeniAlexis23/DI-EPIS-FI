@@ -25,9 +25,9 @@ const getActivityMeta = (name = "") => {
   if (n.includes("ceremonia") || n.includes("clausura")) return { type: "keynote", speaker: "Comité Organizador" };
   if (n.includes("break") || n.includes("café")) return { type: "break", speaker: "" };
   if (n.includes("campeonato") || n.includes("deportivo")) return { type: "networking", speaker: "Delegados de Deportes" };
-  if (n.includes("tecnología")) return { type: "talk", speaker: "Ponente de Tecnología" };
+  if (n.includes("tecnología")) return { type: "talk", speaker: "Ponente: Ing. Jair Manrique" };
   if (n.includes("blandas")) return { type: "talk", speaker: "Ponente de Habilidades Blandas" };
-  if (n.includes("conferencia") || n.includes("magistral")) return { type: "talk", speaker: "Ponente Invitado" };
+  if (n.includes("conferencia") || n.includes("magistral")) return { type: "talk", speaker: "Ponente: Lic. Ivo Yance" };
   return { type: "talk", speaker: "" };
 };
 
@@ -38,7 +38,7 @@ export const Services = (props) => {
         <div className="section-title section-title--schedule">
           <h2>Cronograma de Actividades</h2>
           <p>
-            Programación oficial del evento · 05 de junio de 2025 · Casa de la
+            Programación oficial del evento · 10 de junio de 2025 · Casa de la
             Cultura
           </p>
         </div>

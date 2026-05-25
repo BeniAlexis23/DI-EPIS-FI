@@ -72,7 +72,7 @@
     },
     {
       "icon": "fa fa-lock",
-      "name": "Conferencia Magistral sobre Tecnología",
+      "name": "Conferencia: Magistral sobre Tecnología",
       "text": "09:30 am - 10:30 am - Auditorio de la Casa de la Cultura."
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "icon": "fa fa-coffee",
-      "name": "Conferencia sobre Habilidades Blandas",
+      "name": "Conferencia: Habilidades más allá del Prompt",
       "text": "10:50 am - 11:50 am - Auditorio de la Casa de la Cultura."
     },
     {
