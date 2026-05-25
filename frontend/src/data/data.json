@@ -15,6 +15,11 @@
       "Deportes."
     ]
   },
+  "Speaker": {
+    "name": "Ing. Jair Manrique",
+    "description": "Virtual Diputado del Congreso de la República. Becado por el Ministerio de Producción del Perú para un posgrado en MIT - Massachusetts Institute of Technology en Digital Transformation.  Docente de Blockchain en INICTEL UNI y Incubadora 1551 UNMSM. CTO & Founder en Solvi, una aplicación que brinda microconsultas personalizadas instantáneas para estudiantes de ciencias con la que ganamos StartUp Peru 6G y la incubación de UNI y PUCP.  Fundador y desarrollador FullStack en Divelia.com, un estudio de programación de software de alta tecnología con más de 150 proyectos para 100 clientes en 10 países.  Actualmente estoy trabajando en WatchOil, una aplicación Blockchain para rastrear en la industria de hidrocarburos aguas abajo. CEO & Founder de Tectopia.",
+    "image": "img/team/05.webp"
+  },
   "Gallery": [
     {
       "title": "Project Title",

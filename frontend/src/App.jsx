@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigation } from "./components/navigation";
 import { Header } from "./components/header";
 import { About } from "./components/about";
+import { Speaker } from "./components/speaker";
 import { Services } from "./components/services";
 import { Gallery } from "./components/gallery";
 import { Team } from "./components/Team";
@@ -114,6 +115,9 @@ const App = () => {
       </div>
       <div className="reveal-scroll-section">
         <About data={landingPageData.About} />
+      </div>
+      <div className="reveal-scroll-section">
+        <Speaker data={landingPageData.Speaker} />
       </div>
       <div className="reveal-scroll-section">
         <Services data={landingPageData.Services} />

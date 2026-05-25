@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-const trackedSections = ["about", "services", "portfolio", "team"];
+const trackedSections = ["about", "speaker", "services", "portfolio", "team"];
 
 const getSectionTop = (section) => section.getBoundingClientRect().top + window.scrollY;
 
@@ -87,6 +87,11 @@ export const Navigation = () => {
             <li>
               <a href="/#about" className="page-scroll">
                 Acerca
+              </a>
+            </li>
+            <li>
+              <a href="/#speaker" className="page-scroll">
+                Ponente
               </a>
             </li>
             <li>

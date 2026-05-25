@@ -599,6 +599,77 @@ header .intro-text {
   line-height: 24px;
 }
 
+#speaker {
+  background: rgba(7, 17, 31, 0.5);
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+#speaker .container {
+  position: relative;
+  z-index: 2;
+}
+
+.speaker-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1fr);
+  align-items: center;
+  gap: 54px;
+}
+
+.speaker-copy {
+  max-width: 560px;
+}
+
+.speaker-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  margin-bottom: 16px;
+  padding: 7px 14px;
+  color: #f0c76a;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  border: 1px solid rgba(240, 199, 106, 0.32);
+  border-radius: 999px;
+  background: rgba(240, 199, 106, 0.08);
+}
+
+#speaker h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #4ea6ff, #f0c76a);
+  border-radius: 999px;
+  left: 0;
+  margin-left: 0;
+}
+
+#speaker p {
+  max-width: 520px;
+  margin: 0;
+  color: #aebccd;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.speaker-media img {
+  width: 100%;
+  min-height: 420px;
+  max-height: 540px;
+  object-fit: cover;
+  object-position: center;
+  border: 1px solid rgba(188, 209, 232, 0.22);
+  border-radius: 8px;
+  background: rgba(10, 22, 37, 0.78);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+}
+
 #services {
   color: #eef6ff;
   padding: 100px 0;
@@ -2399,6 +2470,20 @@ header .intro-text {
 }
 
 @media (max-width: 991px) {
+  .speaker-grid {
+    grid-template-columns: 1fr;
+    gap: 34px;
+  }
+
+  .speaker-copy {
+    max-width: none;
+  }
+
+  .speaker-media img {
+    min-height: 340px;
+    max-height: 440px;
+  }
+
   .registration-content-grid {
     grid-template-columns: 1fr;
     gap: 24px;
@@ -2493,6 +2578,7 @@ header .intro-text {
   #portfolio,
   #team,
   #about,
+  #speaker,
   #footer {
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -2503,6 +2589,7 @@ header .intro-text {
   #portfolio > .container,
   #team > .container,
   #about > .container,
+  #speaker > .container,
   #footer > .container {
     width: 100%;
     max-width: 100%;
@@ -2565,6 +2652,7 @@ header .intro-text {
   #portfolio > .container,
   #team > .container,
   #about > .container,
+  #speaker > .container,
   #footer > .container {
     padding-left: 18px;
     padding-right: 18px;
@@ -2573,6 +2661,7 @@ header .intro-text {
 
 @media (max-width: 400px) {
   #about,
+  #speaker,
   #services,
   #testimonials,
   #team,
