@@ -92,13 +92,8 @@ export const Navigation = () => {
               </a>
             </li>
             <li>
-              <a href="#contact" className="page-scroll nav-btn">
-                Ponencias
-              </a>
-            </li>
-            <li>
-              <a href="/deportes" className="nav-btn nav-btn-sports">
-                Deportes
+              <a href="#contact" className="page-scroll">
+                Registro
               </a>
             </li>
           </ul>
