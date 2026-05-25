@@ -14,6 +14,8 @@ COPY . .
 ARG REACT_APP_API_URL=https://api-formulario.episundc.pe
 ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
+# Cambia en Dockploy si el build reutiliza capas viejas (Build Args: CACHEBUST=timestamp)
+ARG CACHEBUST=1
 RUN pnpm run build
 
 # Etapa 2: servir archivos estáticos con nginx
