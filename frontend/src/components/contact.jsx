@@ -1,5 +1,10 @@
 import { useState } from "react";
-import Swal from "sweetalert2";
+import {
+  showFormError,
+  showFormInfo,
+  showFormSuccess,
+  showFormWarning,
+} from "../utils/formAlerts";
 
 const requiredFieldLabels = {
   name: "Nombres completos",
@@ -66,11 +71,7 @@ export const Contact = () => {
     const validationMessage = getValidationMessage(formData);
 
     if (validationMessage) {
-      Swal.fire({
-        icon: "warning",
-        title: "Revisa el formulario",
-        text: validationMessage,
-      });
+      showFormWarning(validationMessage);
       return;
     }
 
@@ -88,32 +89,21 @@ export const Contact = () => {
       const result = await response.json();
 
       if (response.ok) {
-        Swal.fire({
-          icon: "success",
-          title: "¡Registro exitoso!",
-          text: "Tu formulario fue enviado correctamente.",
-          confirmButtonText: "Aceptar",
-        });
+        showFormSuccess(
+          "¡Registro exitoso!",
+          "Tu formulario fue enviado correctamente. Revisa tu correo para confirmaciones del evento."
+        );
         clearState();
       } else if (response.status === 409) {
-        Swal.fire({
-          icon: "info",
-          title: "Registro duplicado",
-          text: result.message,
-        });
+        showFormInfo("Registro duplicado", result.message);
       } else {
-        Swal.fire({
-          icon: "error",
-          title: "Error al enviar",
-          text: result.message,
-        });
+        showFormError("Error al enviar", result.message);
       }
     } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error del servidor",
-        text: error.message,
-      });
+      showFormError(
+        "Error del servidor",
+        "No pudimos conectar con el servidor. Intenta de nuevo en unos minutos."
+      );
     }
   };
 

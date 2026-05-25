@@ -2,6 +2,7 @@ require('dotenv').config(); // ← debe ir antes que cualquier uso de process.en
 
 const express = require("express");
 const path = require("path");
+const os = require("os");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -174,9 +175,50 @@ app.post("/api/deportes", async (req, res) => {
 //    res.sendFile(path.join(__dirname, "frontend/build", "index.html"));
 //});
 
-// Iniciar servidor en el puerto definido o por defecto 5000
+const getNetworkAddresses = () => {
+    try {
+        const interfaces = os.networkInterfaces();
+        const addresses = [];
+
+        for (const [name, nets] of Object.entries(interfaces)) {
+            for (const net of nets) {
+                const isIPv4 = net.family === "IPv4" || net.family === 4;
+                if (isIPv4 && !net.internal) {
+                    addresses.push({ name, address: net.address });
+                }
+            }
+        }
+
+        return addresses;
+    } catch (error) {
+        console.warn("⚠️ No se pudieron leer las interfaces de red:", error.message);
+        return [];
+    }
+};
+
+const logServerStartup = (port) => {
+    console.log("────────────────────────────────────────");
+    console.log(`🚀 Servidor backend en puerto ${port}`);
+    console.log(`   Local:    http://localhost:${port}`);
+    console.log(`   Red (0):  http://0.0.0.0:${port}`);
+
+    const networkAddresses = getNetworkAddresses();
+
+    if (networkAddresses.length > 0) {
+        console.log("   Red local (usa estas IPs para conectarte):");
+        networkAddresses.forEach(({ name, address }) => {
+            console.log(`   • http://${address}:${port}  (${name})`);
+        });
+    } else {
+        console.log("   Red local: no se detectaron IPs externas (solo localhost)");
+    }
+
+    console.log("────────────────────────────────────────");
+};
+
+// Iniciar servidor en el puerto definido o por defecto 3000
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Servidor backend corriendo en http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+    logServerStartup(PORT);
 });
 

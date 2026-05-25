@@ -1,5 +1,10 @@
 import { useMemo, useState } from "react";
-import Swal from "sweetalert2";
+import {
+  showFormError,
+  showFormInfo,
+  showFormSuccess,
+  showFormWarning,
+} from "../utils/formAlerts";
 
 const API_BASE = process.env.REACT_APP_API_URL || "https://api-formulario.episundc.pe";
 
@@ -180,11 +185,7 @@ export const SportsRegistration = () => {
     const validationMessage = getValidationMessage(formData);
 
     if (validationMessage) {
-      Swal.fire({
-        icon: "warning",
-        title: "Revisa el formulario",
-        text: validationMessage,
-      });
+      showFormWarning(validationMessage);
       return;
     }
 
@@ -202,26 +203,21 @@ export const SportsRegistration = () => {
       const result = await response.json();
 
       if (response.ok) {
-        Swal.fire({
-          icon: "success",
-          title: "¡Equipo registrado!",
-          text: "El registro deportivo fue enviado correctamente.",
-          confirmButtonText: "Aceptar",
-        });
+        showFormSuccess(
+          "¡Equipo registrado!",
+          "El registro deportivo fue enviado correctamente. Te contactaremos si necesitamos más datos."
+        );
         clearState();
+      } else if (response.status === 409) {
+        showFormInfo("Registro duplicado", result.message);
       } else {
-        Swal.fire({
-          icon: response.status === 409 ? "info" : "error",
-          title: response.status === 409 ? "Registro duplicado" : "Error al enviar",
-          text: result.message,
-        });
+        showFormError("Error al enviar", result.message);
       }
     } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Error del servidor",
-        text: error.message,
-      });
+      showFormError(
+        "Error del servidor",
+        "No pudimos conectar con el servidor. Intenta de nuevo en unos minutos."
+      );
     }
   };
 
