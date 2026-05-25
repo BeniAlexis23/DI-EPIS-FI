@@ -12,7 +12,7 @@ const Deportes = require("./models/Deportes");
 const { sanitizeDeportes, validarDeportes } = require("./utils/deportesValidation");
 
 
-const CICLOS_PERMITIDOS = new Set(["I", "III", "V", "VII", "IX", "X"]);
+const CLASIFICACION_MAX_LENGTH = 120;
 
 const sanitizeContacto = (body) => ({
     codEstudiante: String(body.codEstudiante || "").trim(),
@@ -33,7 +33,7 @@ const validarContacto = (data) => {
         ["lastnameMaterno", "Apellido materno"],
         ["phone", "Celular"],
         ["email", "Correo institucional"],
-        ["ciclo", "Ciclo académico"],
+        ["ciclo", "Clasificación"],
         ["message", "Expectativa del evento"],
     ];
 
@@ -57,8 +57,8 @@ const validarContacto = (data) => {
         return "Ingresa un correo válido.";
     }
 
-    if (!CICLOS_PERMITIDOS.has(data.ciclo)) {
-        return "Selecciona un ciclo académico válido.";
+    if (data.ciclo.length > CLASIFICACION_MAX_LENGTH) {
+        return `La clasificación no puede exceder ${CLASIFICACION_MAX_LENGTH} caracteres.`;
     }
 
     return null;

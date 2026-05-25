@@ -78,20 +78,23 @@ export const Contact = () => {
     const sanitizedData = sanitizeFormData(formData);
 
     try {
-      const response = await fetch("https://api-formulario.episundc.pe/api/contacto", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      const response = await fetch(
+        "https://api-formulario.episundc.pe/api/contacto",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(sanitizedData),
         },
-        body: JSON.stringify(sanitizedData),
-      });
+      );
 
       const result = await response.json();
 
       if (response.ok) {
         showFormSuccess(
           "¡Registro exitoso!",
-          "Tu formulario fue enviado correctamente. Revisa tu correo para confirmaciones del evento."
+          "Tu formulario fue enviado correctamente. Revisa tu correo para confirmaciones del evento.",
         );
         clearState();
       } else if (response.status === 409) {
@@ -102,7 +105,7 @@ export const Contact = () => {
     } catch (error) {
       showFormError(
         "Error del servidor",
-        "No pudimos conectar con el servidor. Intenta de nuevo en unos minutos."
+        "No pudimos conectar con el servidor. Intenta de nuevo en unos minutos.",
       );
     }
   };
@@ -177,7 +180,9 @@ export const Contact = () => {
                       />
                     </div>
                     <div className="form-group">
-                      <label htmlFor="institutionalCode">Código institucional</label>
+                      <label htmlFor="institutionalCode">
+                        Código institucional
+                      </label>
                       <input
                         type="text"
                         id="institutionalCode"
@@ -199,20 +204,24 @@ export const Contact = () => {
                         onChange={handleChange}
                       >
                         <option value="">Seleccionar clasificación</option>
-                        <option value="Estudiante - I">Estudiante - I</option>
-                        <option value="Estudiante - II">Estudiante - II</option>
-                        <option value="Estudiante - III">Estudiante - III</option>
-                        <option value="Estudiante - V">Estudiante - V</option>
-                        <option value="Estudiante - VII">Estudiante - VII</option>
-                        <option value="Estudiante - IX">Estudiante - IX</option>
-                        <option value="Público general">Público general</option>
+                        <option value="I CICLO">Estudiante - I</option>
+                        <option value="II CICLO">Estudiante - II</option>
+                        <option value="III CICLO">Estudiante - III</option>
+                        <option value="V CICLO">Estudiante - V</option>
+                        <option value="VII CICLO">Estudiante - VII</option>
+                        <option value="IX CICLO">Estudiante - IX</option>
+                        <option value="General">Público general</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div className="form-disclaimer">
                   <i className="fa fa-info-circle" aria-hidden="true"></i>
-                  <span>Antes de enviar, verifica tu correo y código institucional. Estos datos se usarán para confirmar tu registro y emitir certificados.</span>
+                  <span>
+                    Antes de enviar, verifica tu correo y código institucional.
+                    Estos datos se usarán para confirmar tu registro y emitir
+                    certificados.
+                  </span>
                 </div>
                 <div id="success"></div>
                 <button type="submit" className="btn btn-custom btn-lg">
@@ -227,7 +236,10 @@ export const Contact = () => {
               <article className="registration-map-card contact-support-card registration-animate">
                 <div className="map-card-copy">
                   <span>Información de contacto</span>
-                  <p>Canales disponibles para resolver dudas sobre registro, asistencia y certificados.</p>
+                  <p>
+                    Canales disponibles para resolver dudas sobre registro,
+                    asistencia y certificados.
+                  </p>
 
                   <div className="contact-support-list">
                     <div className="contact-support-item">
