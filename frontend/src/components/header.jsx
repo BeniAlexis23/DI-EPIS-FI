@@ -1,7 +1,7 @@
 export const Header = (props) => {
   return (
     <header id="header">
-      <div className="intro">
+      <div className="intro" style={{ backgroundImage: "url(/img/banner1.png)" }}>
         <div className="overlay">
           <div className="container">
             <div className="row">
@@ -21,7 +21,7 @@ export const Header = (props) => {
                     : "Honrando a quienes transforman ideas en soluciones."}
                 </p>
                 <div className="hero-buttons-container">
-                  <a href="#contact" className="btn btn-custom btn-lg page-scroll">
+                  <a href="/registro" className="btn btn-custom btn-lg">
                     Ponencias
                   </a>
                   <a href="/deportes" className="btn btn-custom btn-lg">
@@ -29,9 +29,9 @@ export const Header = (props) => {
                   </a>
                 </div>
                 <div className="hero-glass-grid" aria-hidden="true">
-                  <div className="hero-glass-card hero-glass-card-one"></div>
-                  <div className="hero-glass-card hero-glass-card-two"></div>
-                  <div className="hero-glass-card hero-glass-card-three"></div>
+                  <div className="hero-glass-card" style={{ backgroundImage: "url(/img/home/1.webp)" }}></div>
+                  <div className="hero-glass-card" style={{ backgroundImage: "url(/img/home/2.webp)" }}></div>
+                  <div className="hero-glass-card" style={{ backgroundImage: "url(/img/home/3.webp)" }}></div>
                 </div>
               </div>
             </div>
@@ -41,5 +41,4 @@ export const Header = (props) => {
     </header>
   );
 };
-
 

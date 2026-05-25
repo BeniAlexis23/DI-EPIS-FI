@@ -1,65 +1,56 @@
 import { useState } from "react";
-import Swal from 'sweetalert2';
+import Swal from "sweetalert2";
 
 const requiredFieldLabels = {
-  codEstudiante: "Código de estudiante",
   name: "Nombres completos",
   lastnamePaterno: "Apellido paterno",
   lastnameMaterno: "Apellido materno",
-  phone: "Celular",
+  institutionalCode: "Código institucional",
   email: "Correo institucional",
-  ciclo: "Ciclo académico",
-  message: "Expectativa del evento",
+  ciclo: "Clasificación",
+};
+
+const initialState = {
+  name: "",
+  lastnamePaterno: "",
+  lastnameMaterno: "",
+  institutionalCode: "",
+  email: "",
+  ciclo: "",
 };
 
 const sanitizeFormData = (data) => ({
-  codEstudiante: data.codEstudiante.trim(),
+  codEstudiante: data.institutionalCode.trim(),
   name: data.name.trim(),
   lastnamePaterno: data.lastnamePaterno.trim(),
   lastnameMaterno: data.lastnameMaterno.trim(),
-  phone: data.phone.trim(),
+  phone: "999999999",
   email: data.email.trim().toLowerCase(),
   ciclo: data.ciclo.trim(),
-  message: data.message.trim(),
+  message: "Registro al evento por el Día del Ingeniero",
 });
 
 const getValidationMessage = (data) => {
   const missingFields = Object.entries(requiredFieldLabels)
-    .filter(([field]) => !data[field])
+    .filter(([field]) => !String(data[field]).trim())
     .map(([, label]) => label);
 
   if (missingFields.length > 0) {
     return `Completa todos los campos requeridos: ${missingFields.join(", ")}.`;
   }
 
-  if (!/^\d{10}$/.test(data.codEstudiante)) {
-    return "El código de estudiante debe tener exactamente 10 dígitos.";
+  if (!data.institutionalCode.trim()) {
+    return "Ingresa tu código institucional.";
   }
 
-  if (!/^\d{9}$/.test(data.phone)) {
-    return "El número de celular debe tener exactamente 9 dígitos.";
-  }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
-    return "Ingresa un correo válido.";
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
+    return "Ingresa un correo electrónico válido.";
   }
 
   return null;
 };
-const initialState = {
-  codEstudiante: "",
-  name: "",
-  lastnamePaterno: "",
-  lastnameMaterno: "",
-  phone: "",
-  email: "",
-  ciclo: "",
-  message: "",
-};
 
-export const Contact = (props) => {
-
-  // Estado para manejar los datos del formulario
+export const Contact = () => {
   const [formData, setFormData] = useState(initialState);
 
   const handleChange = (e) => {
@@ -72,20 +63,21 @@ export const Contact = (props) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const sanitizedData = sanitizeFormData(formData);
-    const validationMessage = getValidationMessage(sanitizedData);
+    const validationMessage = getValidationMessage(formData);
 
     if (validationMessage) {
       Swal.fire({
-        icon: 'warning',
-        title: 'Revisa el formulario',
+        icon: "warning",
+        title: "Revisa el formulario",
         text: validationMessage,
       });
       return;
     }
 
+    const sanitizedData = sanitizeFormData(formData);
+
     try {
-      const response = await fetch("https://api-formulario.episundc.pe/api/contacto" /* API produccion: "https://api-formulario.episundc.pe/api/contacto" */, {
+      const response = await fetch("https://api-formulario.episundc.pe/api/contacto", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -97,70 +89,48 @@ export const Contact = (props) => {
 
       if (response.ok) {
         Swal.fire({
-          icon: 'success',
-          title: '¡Registro exitoso!',
-          text: 'Tu formulario fue enviado correctamente.',
-          confirmButtonText: 'Aceptar',
+          icon: "success",
+          title: "¡Registro exitoso!",
+          text: "Tu formulario fue enviado correctamente.",
+          confirmButtonText: "Aceptar",
         });
         clearState();
       } else if (response.status === 409) {
         Swal.fire({
-          icon: 'info',
-          title: 'Registro duplicado',
+          icon: "info",
+          title: "Registro duplicado",
           text: result.message,
         });
       } else {
         Swal.fire({
-          icon: 'error',
-          title: 'Error al enviar',
+          icon: "error",
+          title: "Error al enviar",
           text: result.message,
         });
       }
     } catch (error) {
       Swal.fire({
-        icon: 'error',
-        title: 'Error del servidor',
+        icon: "error",
+        title: "Error del servidor",
         text: error.message,
       });
     }
   };
 
   return (
-    <div>
-      <div id="contact">
-        <div className="container">
+    <div id="contact" className="registration-section">
+      <div className="container registration-form-container">
+        <div className="row registration-content-grid">
           <div className="col-md-8">
-            <div className="row">
-              <div className="section-title">
-                <h2>Registro</h2>
-                <p>
-                  Completa el siguiente formulario para registrarte al evento. Recibirás un correo de confirmación con los detalles del evento. <br /> <br />Recuerda que los datos ingresados deben ser válidos y reales, ya que serán utilizados para la entrega de certificados.
-                </p>
-              </div>
+            <div className="registration-form-shell registration-animate">
               <form name="sentMessage" onSubmit={handleSubmit}>
+                <div className="form-intro">
+                  <span>Datos personales</span>
+                </div>
                 <div className="row">
                   <div className="col-md-6">
                     <div className="form-group">
-                      <input
-                        type="text"
-                        id="codEstudiante"
-                        name="codEstudiante"
-                        className="form-control"
-                        placeholder="Codigo de Estudiante"
-                        required
-                        maxLength={10}
-                        value={formData.codEstudiante}
-                        onChange={(e) => {
-                          // Solo permitir números (y hasta 10 caracteres)
-                          const value = e.target.value;
-                          if (/^\d{0,10}$/.test(value)) {
-                            setFormData((prev) => ({ ...prev, codEstudiante: value }));
-                          }
-                        }}
-                      />
-                      <p className="help-block text-danger"></p>
-                    </div>
-                    <div className="form-group">
+                      <label htmlFor="name">Nombres completos</label>
                       <input
                         type="text"
                         id="name"
@@ -174,6 +144,7 @@ export const Contact = (props) => {
                       <p className="help-block text-danger"></p>
                     </div>
                     <div className="form-group">
+                      <label htmlFor="lastnamePaterno">Apellido paterno</label>
                       <input
                         type="text"
                         id="lastnamePaterno"
@@ -187,6 +158,7 @@ export const Contact = (props) => {
                       <p className="help-block text-danger"></p>
                     </div>
                     <div className="form-group">
+                      <label htmlFor="lastnameMaterno">Apellido materno</label>
                       <input
                         type="text"
                         id="lastnameMaterno"
@@ -200,40 +172,34 @@ export const Contact = (props) => {
                       <p className="help-block text-danger"></p>
                     </div>
                   </div>
+
                   <div className="col-md-6">
                     <div className="form-group">
+                      <label htmlFor="email">Correo</label>
                       <input
                         type="email"
                         id="email"
                         name="email"
                         className="form-control"
-                        placeholder="Correo Institucional"
                         required
                         value={formData.email}
                         onChange={handleChange}
                       />
-                      <p className="help-block text-danger"></p>
                     </div>
                     <div className="form-group">
+                      <label htmlFor="institutionalCode">Código institucional</label>
                       <input
                         type="text"
-                        id="phone"
-                        name="phone"
+                        id="institutionalCode"
+                        name="institutionalCode"
                         className="form-control"
-                        placeholder="Celular"
                         required
-                        maxLength={9}
-                        value={formData.phone}
-                        onChange={(e) => {
-                          const value = e.target.value;
-                          if (/^\d{0,9}$/.test(value)) {
-                            setFormData((prev) => ({ ...prev, phone: value }));
-                          }
-                        }}
+                        value={formData.institutionalCode}
+                        onChange={handleChange}
                       />
-                      <p className="help-block text-danger"></p>
                     </div>
                     <div className="form-group">
+                      <label htmlFor="ciclo">Clasificación</label>
                       <select
                         id="ciclo"
                         name="ciclo"
@@ -242,30 +208,21 @@ export const Contact = (props) => {
                         value={formData.ciclo}
                         onChange={handleChange}
                       >
-                        <option value="">Seleccione su ciclo académico</option>
-                        <option value="I">I</option>
-                        <option value="II">II</option>
-                        <option value="III">III</option>
-                        <option value="V">V</option>
-                        <option value="VII">VII</option>
-                        <option value="IX">IX</option>
+                        <option value="">Seleccionar clasificación</option>
+                        <option value="Estudiante - I">Estudiante - I</option>
+                        <option value="Estudiante - II">Estudiante - II</option>
+                        <option value="Estudiante - III">Estudiante - III</option>
+                        <option value="Estudiante - V">Estudiante - V</option>
+                        <option value="Estudiante - VII">Estudiante - VII</option>
+                        <option value="Estudiante - IX">Estudiante - IX</option>
+                        <option value="Público general">Público general</option>
                       </select>
-                      <p className="help-block text-danger"></p>
                     </div>
                   </div>
                 </div>
-                <div className="form-group">
-                  <textarea
-                    name="message"
-                    id="message"
-                    className="form-control"
-                    rows="4"
-                    placeholder="¿Que esperas del evento?"
-                    required
-                    value={formData.message}
-                    onChange={handleChange}
-                  ></textarea>
-                  <p className="help-block text-danger"></p>
+                <div className="form-disclaimer">
+                  <i className="fa fa-info-circle" aria-hidden="true"></i>
+                  <span>Antes de enviar, verifica tu correo y código institucional. Estos datos se usarán para confirmar tu registro y emitir certificados.</span>
                 </div>
                 <div id="success"></div>
                 <button type="submit" className="btn btn-custom btn-lg">
@@ -274,67 +231,57 @@ export const Contact = (props) => {
               </form>
             </div>
           </div>
-          <div className="col-md-3 col-md-offset-1 contact-info">
-            <div className="contact-item">
-              <h3>Información de Contacto</h3>
-              <p>
-                <span>
-                  <i className="fa fa-map-marker"></i> Ubicación
-                </span>
-                {props.data ? props.data.address : "loading"}
-              </p>
-            </div>
-            <div className="contact-item">
-              <p>
-                <span>
-                  <i className="fa fa-phone"></i> Celular
-                </span>{" "}
-                {props.data ? props.data.phone : "loading"}
-              </p>
-            </div>
-            <div className="contact-item">
-              <p>
-                <span>
-                  <i className="fa fa-envelope-o"></i> Email
-                </span>{" "}
-                {props.data ? props.data.email : "loading"}
-              </p>
+
+          <div className="col-md-4">
+            <div className="registration-map-stack">
+              <article className="registration-map-card contact-support-card registration-animate">
+                <div className="map-card-copy">
+                  <span>Información de contacto</span>
+                  <p>Canales disponibles para resolver dudas sobre registro, asistencia y certificados.</p>
+
+                  <div className="contact-support-list">
+                    <div className="contact-support-item">
+                      <i className="fa fa-comments-o" aria-hidden="true"></i>
+                      <div>
+                        <strong>Consultas rápidas</strong>
+                        <small>Registro, horarios y participación</small>
+                      </div>
+                    </div>
+                    <div className="contact-support-item">
+                      <i className="fa fa-clock-o" aria-hidden="true"></i>
+                      <div>
+                        <strong>Atención</strong>
+                        <small>Lunes a viernes, 9:00 a.m. a 5:00 p.m.</small>
+                      </div>
+                    </div>
+                    <div className="contact-support-item">
+                      <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                      <div>
+                        <strong>Correo</strong>
+                        <small>dsistemas@undc.edu.pe</small>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article className="registration-map-card registration-animate">
+                <div className="map-card-copy">
+                  <span>Ubicación principal</span>
+                  <h3>Casa de la Cultura</h3>
+                  <p>Referencia para las ponencias y actividades centrales.</p>
+                </div>
+                <iframe
+                  title="Mapa Casa de la Cultura"
+                  src="https://maps.google.com/maps?q=Casa%20de%20la%20Cultura%20Ca%C3%B1ete%20Per%C3%BA&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </article>
             </div>
           </div>
-          <div className="col-md-12">
-            <div className="row">
-              <div className="social">
-                <ul>
-                  <li>
-                    <a href={props.data ? props.data.facebook : "/"}>
-                      <i className="fa fa-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.twitter : "/"}>
-                      <i className="fa fa-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href={props.data ? props.data.youtube : "/"}>
-                      <i className="fa fa-github"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="footer">
-        <div className="container text-center">
-          <p>
-            &copy; 2026 Facultad de Ingeniería - UNDC
-          </p>
         </div>
       </div>
     </div>
   );
 };
-
-

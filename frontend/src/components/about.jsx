@@ -3,11 +3,11 @@ export const About = (props) => {
     <div id="about">
       <div className="container">
         <div className="row">
-          <div className="col-xs-12 col-md-6">
+          <div className="col-xs-12 col-md-6 reveal-scroll-item">
             {" "}
             <img src="img/about.webp" className="img-responsive" alt="" />{" "}
           </div>
-          <div className="col-xs-12 col-md-6">
+          <div className="col-xs-12 col-md-6 reveal-scroll-item">
             <div className="about-text">
               <h2>Acerca de</h2>
               <p className="text-justify">{props.data ? props.data.paragraph : "loading..."}</p>

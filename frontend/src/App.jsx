@@ -6,6 +6,9 @@ import { Services } from "./components/services";
 import { Gallery } from "./components/gallery";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
+import { RegistrationHero } from "./components/registrationHero";
+import { SportsRegistration } from "./components/sportsRegistration";
+import { Footer } from "./components/footer";
 import JsonData from "./data/data.json";
 import "./App.css";
 
@@ -17,34 +20,91 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    if (window.location.pathname === "/registro" || window.location.pathname === "/deportes") return;
     if (Object.keys(landingPageData).length === 0) return;
+
+    let lastScrollY = window.scrollY;
+    let lastScrollTime = performance.now();
+    let scrollSpeed = 0;
+
+    const updateScrollSpeed = () => {
+      const now = performance.now();
+      const distance = Math.abs(window.scrollY - lastScrollY);
+      const elapsed = Math.max(now - lastScrollTime, 1);
+
+      scrollSpeed = distance / elapsed;
+      lastScrollY = window.scrollY;
+      lastScrollTime = now;
+    };
 
     const observerOptions = {
       root: null,
-      rootMargin: "0px",
-      threshold: 0.1,
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.18,
     };
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
+          const revealItems = entry.target.querySelectorAll(".reveal-scroll-item");
+          const shouldAnimate = window.scrollY > 80 && scrollSpeed < 0.9;
+
           entry.target.classList.add("is-visible");
+          entry.target.classList.toggle("has-scroll-animation", shouldAnimate);
+
+          revealItems.forEach((item, index) => {
+            item.style.setProperty("--reveal-delay", `${Math.min(index, 6) * 85}ms`);
+          });
+
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    const revealElements = document.querySelectorAll(".reveal-scroll-section");
+    const revealSections = document.querySelectorAll(".reveal-scroll-section");
 
     const timer = setTimeout(() => {
-      revealElements.forEach((el) => observer.observe(el));
+      revealSections.forEach((section) => observer.observe(section));
     }, 100);
+
+    window.addEventListener("scroll", updateScrollSpeed, { passive: true });
 
     return () => {
       clearTimeout(timer);
-      revealElements.forEach((el) => observer.unobserve(el));
+      window.removeEventListener("scroll", updateScrollSpeed);
+      revealSections.forEach((section) => observer.unobserve(section));
     };
   }, [landingPageData]);
+
+  if (window.location.pathname === "/registro") {
+    return (
+      <div className="registration-page">
+        <div>
+          <Navigation />
+          <RegistrationHero data={landingPageData.Header} />
+        </div>
+        <Contact data={landingPageData.Contact} />
+        <Footer />
+      </div>
+    );
+  }
+
+  if (window.location.pathname === "/deportes") {
+    return (
+      <div className="registration-page">
+        <div>
+          <Navigation />
+          <RegistrationHero
+            data={landingPageData.Header}
+            titleLight="Inscripción"
+            titleStrong="Deportes"
+          />
+        </div>
+        <SportsRegistration />
+        <Footer />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -64,9 +124,7 @@ const App = () => {
       <div className="reveal-scroll-section">
         <Team data={landingPageData.Team} />
       </div>
-      <div className="reveal-scroll-section">
-        <Contact data={landingPageData.Contact} />
-      </div>
+      <Footer />
     </div>
   );
 };

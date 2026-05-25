@@ -7,6 +7,8 @@ const bodyParser = require("body-parser");
 
 const sequelize = require("./config/db");
 const Contacto = require("./models/Contacto");
+const Deportes = require("./models/Deportes");
+const { sanitizeDeportes, validarDeportes } = require("./utils/deportesValidation");
 
 
 const CICLOS_PERMITIDOS = new Set(["I", "III", "V", "VII", "IX", "X"]);
@@ -112,6 +114,56 @@ app.post("/api/contacto", async (req, res) => {
 
         console.error("❌ Error al guardar datos:", err);
         res.status(500).json({ message: "Error al guardar datos" });
+    }
+});
+
+// Ruta para registro deportivo de equipos
+app.post("/api/deportes", async (req, res) => {
+    const datosDeportes = sanitizeDeportes(req.body);
+    console.log("📨 Datos recibidos desde registro deportivo:", datosDeportes);
+
+    const validationError = validarDeportes(datosDeportes);
+    if (validationError) {
+        return res.status(400).json({ message: validationError });
+    }
+
+    try {
+        const existe = await Deportes.findOne({
+            where: {
+                nombreEquipo: datosDeportes.nombreEquipo,
+                deporte: datosDeportes.deporte,
+            },
+        });
+
+        if (existe) {
+            return res.status(409).json({
+                message: "Ya existe un equipo con ese nombre registrado en esta modalidad.",
+            });
+        }
+
+        const nuevoRegistro = await Deportes.create({
+            tipo: datosDeportes.tipo,
+            ciclo: datosDeportes.ciclo,
+            nombreEquipo: datosDeportes.nombreEquipo,
+            deporte: datosDeportes.deporte,
+            phone: datosDeportes.phone,
+            titulares: datosDeportes.titulares,
+            suplentes: datosDeportes.suplentes,
+        });
+
+        res.status(200).json({
+            message: "Equipo registrado correctamente",
+            data: nuevoRegistro,
+        });
+    } catch (err) {
+        if (err.name === "SequelizeUniqueConstraintError") {
+            return res.status(409).json({
+                message: "Ya existe un equipo con ese nombre registrado en esta modalidad.",
+            });
+        }
+
+        console.error("❌ Error al guardar registro deportivo:", err);
+        res.status(500).json({ message: "Error al guardar el registro deportivo" });
     }
 });
 
