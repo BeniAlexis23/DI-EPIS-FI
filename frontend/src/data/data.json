@@ -6,20 +6,21 @@
   },
   "About": {
     "paragraph": "El 8 de junio se celebra en el Perú el Día del Ingeniero, una fecha especial para reconocer la labor de los profesionales que, con creatividad, conocimiento y compromiso, contribuyen al desarrollo del país. En este día se rinde homenaje a quienes, desde las diversas ramas de la ingeniería, impulsan soluciones innovadoras y construyen un futuro más sostenible y tecnológico. Al igual que el año pasado, el día 05 de Junio del 2025, la Escuela Profesional de Ingeniería de Sistemas de la UNDC llevará a cabo un evento de conmemoración dirigido a docentes, estudiantes, egresados y personal administrativo, reafirmando su compromiso con la excelencia y el orgullo sistémico.",
-    "Why": [
-      "Ceremonia de conmemoración.",
-      "Ponencias especializadas."
-    ],
-    "Why2": [
-      "Reconocimientos.",
-      "Deportes."
-    ]
+    "Why": ["Ceremonia de conmemoración.", "Ponencias especializadas."],
+    "Why2": ["Reconocimientos.", "Deportes."]
   },
-  "Speaker": {
-    "name": "Ing. Jair Manrique",
-    "description": "Virtual Diputado del Congreso de la República. Becado por el Ministerio de Producción del Perú para un posgrado en MIT - Massachusetts Institute of Technology en Digital Transformation.  Docente de Blockchain en INICTEL UNI y Incubadora 1551 UNMSM. CTO & Founder en Solvi, una aplicación que brinda microconsultas personalizadas instantáneas para estudiantes de ciencias con la que ganamos StartUp Peru 6G y la incubación de UNI y PUCP.  Fundador y desarrollador FullStack en Divelia.com, un estudio de programación de software de alta tecnología con más de 150 proyectos para 100 clientes en 10 países.  Actualmente estoy trabajando en WatchOil, una aplicación Blockchain para rastrear en la industria de hidrocarburos aguas abajo. CEO & Founder de Tectopia.",
-    "image": "img/team/05.webp"
-  },
+  "Speaker": [
+    {
+      "name": "Ing. Jair Manrique",
+      "description": "Virtual Diputado del Congreso de la República. Becado por el Ministerio de Producción del Perú para un posgrado en MIT - Massachusetts Institute of Technology en Digital Transformation.  Docente de Blockchain en INICTEL UNI y Incubadora 1551 UNMSM. CTO & Founder en Solvi, una aplicación que brinda microconsultas personalizadas instantáneas para estudiantes de ciencias con la que ganamos StartUp Peru 6G y la incubación de UNI y PUCP.  Fundador y desarrollador FullStack en Divelia.com, un estudio de programación de software de alta tecnología con más de 150 proyectos para 100 clientes en 10 países.  Actualmente estoy trabajando en WatchOil, una aplicación Blockchain para rastrear en la industria de hidrocarburos aguas abajo. CEO & Founder de Tectopia.",
+      "image": "img/team/05.webp"
+    },
+    {
+      "name": "Lic. Yvo Yance",
+      "description": "Comunicador, especialista en marketing estratégico y experto facilitador de experiencias de aprendizaje efectivas, vivenciales y lúdicas para públicos diversos. Desde hace más de una década, contribuye con universidades e institutos brindando a sus estudiantes conocimientos sobre marketing, comunicación y liderazgo. Asimismo, apoya a organizaciones en el fortalecimiento de su competitividad dentro de sus industrias y mercados, mediante la investigación y el análisis de clientes y consumidores. Esto le permite impulsar culturas corporativas orientadas al éxito, la innovación y el cambio. Su sello personal se caracteriza por el carisma, la energía y la pasión con la que desarrolla cada proyecto, cualidades que le han permitido implementar iniciativas académicas, ganar concursos, colaborar en campañas sociales y obtener una beca del gobierno central para realizar una certificación en Innovación y Marketing en Esade. Lo inspira la idea de que todas las personas pueden aprender y mejorar cada día; por ello, está comprometido en servir y aportar valor, acercando a las organizaciones a sus clientes, motivando a sus equipos de trabajo y contribuyendo al crecimiento de sus ventas.",
+      "image": "img/team/06.webp"
+    }
+  ],
   "Gallery": [
     {
       "title": "Project Title",

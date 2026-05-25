@@ -618,6 +618,18 @@ header .intro-text {
   gap: 54px;
 }
 
+.speaker-grid + .speaker-grid {
+  margin-top: 82px;
+}
+
+.speaker-grid--reversed .speaker-copy {
+  order: 2;
+}
+
+.speaker-grid--reversed .speaker-media {
+  order: 1;
+}
+
 .speaker-copy {
   max-width: 560px;
 }
@@ -2613,6 +2625,15 @@ body.gallery-modal-open {
   .speaker-grid {
     grid-template-columns: 1fr;
     gap: 34px;
+  }
+
+  .speaker-grid + .speaker-grid {
+    margin-top: 64px;
+  }
+
+  .speaker-grid--reversed .speaker-copy,
+  .speaker-grid--reversed .speaker-media {
+    order: initial;
   }
 
   .speaker-copy {
