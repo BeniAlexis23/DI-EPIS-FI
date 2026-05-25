@@ -6,13 +6,25 @@ import {
   showFormWarning,
 } from "../utils/formAlerts";
 
-const requiredFieldLabels = {
-  name: "Nombres completos",
-  lastnamePaterno: "Apellido paterno",
-  lastnameMaterno: "Apellido materno",
-  institutionalCode: "Código institucional",
-  email: "Correo institucional",
-  ciclo: "Clasificación",
+const PUBLICO_GENERAL = "General";
+
+const requiresInstitutionalCode = (ciclo) =>
+  Boolean(ciclo?.trim()) && ciclo !== PUBLICO_GENERAL;
+
+const getRequiredFieldLabels = (ciclo) => {
+  const fields = {
+    name: "Nombres completos",
+    lastnamePaterno: "Apellido paterno",
+    lastnameMaterno: "Apellido materno",
+    ciclo: "Clasificación",
+    email: "Correo institucional",
+  };
+
+  if (requiresInstitutionalCode(ciclo)) {
+    fields.institutionalCode = "Código de postulante";
+  }
+
+  return fields;
 };
 
 const initialState = {
@@ -25,7 +37,9 @@ const initialState = {
 };
 
 const sanitizeFormData = (data) => ({
-  codEstudiante: data.institutionalCode.trim(),
+  codEstudiante: requiresInstitutionalCode(data.ciclo)
+    ? data.institutionalCode.trim()
+    : "",
   name: data.name.trim(),
   lastnamePaterno: data.lastnamePaterno.trim(),
   lastnameMaterno: data.lastnameMaterno.trim(),
@@ -36,7 +50,7 @@ const sanitizeFormData = (data) => ({
 });
 
 const getValidationMessage = (data) => {
-  const missingFields = Object.entries(requiredFieldLabels)
+  const missingFields = Object.entries(getRequiredFieldLabels(data.ciclo))
     .filter(([field]) => !String(data[field]).trim())
     .map(([, label]) => label);
 
@@ -44,8 +58,11 @@ const getValidationMessage = (data) => {
     return `Completa todos los campos requeridos: ${missingFields.join(", ")}.`;
   }
 
-  if (!data.institutionalCode.trim()) {
-    return "Ingresa tu código institucional.";
+  if (
+    requiresInstitutionalCode(data.ciclo) &&
+    !/^\d{10}$/.test(data.institutionalCode.trim())
+  ) {
+    return "El código de postulante debe tener exactamente 10 dígitos.";
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
@@ -60,10 +77,27 @@ export const Contact = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "institutionalCode") {
+      const digitsOnly = value.replace(/\D/g, "").slice(0, 10);
+      setFormData((prev) => ({ ...prev, institutionalCode: digitsOnly }));
+      return;
+    }
+
+    if (name === "ciclo") {
+      setFormData((prev) => ({
+        ...prev,
+        ciclo: value,
+        ...(value === PUBLICO_GENERAL ? { institutionalCode: "" } : {}),
+      }));
+      return;
+    }
+
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const clearState = () => setFormData({ ...initialState });
+  const showInstitutionalCode = requiresInstitutionalCode(formData.ciclo);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -168,32 +202,6 @@ export const Contact = () => {
 
                   <div className="col-md-6">
                     <div className="form-group">
-                      <label htmlFor="email">Correo</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        className="form-control"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label htmlFor="institutionalCode">
-                        Código institucional
-                      </label>
-                      <input
-                        type="text"
-                        id="institutionalCode"
-                        name="institutionalCode"
-                        className="form-control"
-                        required
-                        value={formData.institutionalCode}
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="form-group">
                       <label htmlFor="ciclo">Clasificación</label>
                       <select
                         id="ciclo"
@@ -210,17 +218,49 @@ export const Contact = () => {
                         <option value="V CICLO">Estudiante - V</option>
                         <option value="VII CICLO">Estudiante - VII</option>
                         <option value="IX CICLO">Estudiante - IX</option>
-                        <option value="General">Público general</option>
+                        <option value={PUBLICO_GENERAL}>Público general</option>
                       </select>
+                    </div>
+                    {showInstitutionalCode && (
+                      <div className="form-group">
+                        <label htmlFor="institutionalCode">
+                          Código de postulante
+                        </label>
+                        <input
+                          type="text"
+                          id="institutionalCode"
+                          name="institutionalCode"
+                          className="form-control"
+                          inputMode="numeric"
+                          autoComplete="off"
+                          placeholder="10 dígitos"
+                          required
+                          maxLength={10}
+                          value={formData.institutionalCode}
+                          onChange={handleChange}
+                        />
+                      </div>
+                    )}
+                    <div className="form-group">
+                      <label htmlFor="email">Correo</label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        className="form-control"
+                        required
+                        value={formData.email}
+                        onChange={handleChange}
+                      />
                     </div>
                   </div>
                 </div>
                 <div className="form-disclaimer">
                   <i className="fa fa-info-circle" aria-hidden="true"></i>
                   <span>
-                    Antes de enviar, verifica tu correo y código institucional.
-                    Estos datos se usarán para confirmar tu registro y emitir
-                    certificados.
+                    {showInstitutionalCode
+                      ? "Antes de enviar, verifica tu correo y código de postulante (10 dígitos). Estos datos se usarán para confirmar tu registro y emitir certificados."
+                      : "Antes de enviar, verifica tu correo. Estos datos se usarán para confirmar tu registro y emitir certificados."}
                   </span>
                 </div>
                 <div id="success"></div>

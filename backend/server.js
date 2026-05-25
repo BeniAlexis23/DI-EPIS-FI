@@ -3,6 +3,7 @@ require('dotenv').config(); // ← debe ir antes que cualquier uso de process.en
 const express = require("express");
 const path = require("path");
 const os = require("os");
+const crypto = require("crypto");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
@@ -13,6 +14,23 @@ const { sanitizeDeportes, validarDeportes } = require("./utils/deportesValidatio
 
 
 const CLASIFICACION_MAX_LENGTH = 120;
+
+const isPublicoGeneral = (ciclo) => {
+    const value = String(ciclo || "").trim().toLowerCase();
+    return value === "general" || value === "público general" || value === "publico general";
+};
+
+const buildCodigoPublicoGeneral = (email) => {
+    const hash = crypto.createHash("sha256").update(email.toLowerCase()).digest("hex");
+    return `PG${hash.slice(0, 8)}`.toUpperCase();
+};
+
+const prepareContacto = (data) => {
+    if (isPublicoGeneral(data.ciclo) && !data.codEstudiante) {
+        return { ...data, codEstudiante: buildCodigoPublicoGeneral(data.email) };
+    }
+    return data;
+};
 
 const sanitizeContacto = (body) => ({
     codEstudiante: String(body.codEstudiante || "").trim(),
@@ -27,7 +45,6 @@ const sanitizeContacto = (body) => ({
 
 const validarContacto = (data) => {
     const camposRequeridos = [
-        ["codEstudiante", "Código de estudiante"],
         ["name", "Nombres completos"],
         ["lastnamePaterno", "Apellido paterno"],
         ["lastnameMaterno", "Apellido materno"],
@@ -37,6 +54,10 @@ const validarContacto = (data) => {
         ["message", "Expectativa del evento"],
     ];
 
+    if (!isPublicoGeneral(data.ciclo)) {
+        camposRequeridos.unshift(["codEstudiante", "Código de postulante"]);
+    }
+
     const incompletos = camposRequeridos
         .filter(([campo]) => !data[campo])
         .map(([, etiqueta]) => etiqueta);
@@ -45,8 +66,8 @@ const validarContacto = (data) => {
         return `Completa todos los campos requeridos: ${incompletos.join(", ")}.`;
     }
 
-    if (!/^\d{10}$/.test(data.codEstudiante)) {
-        return "El código de estudiante debe tener exactamente 10 dígitos.";
+    if (!isPublicoGeneral(data.ciclo) && !/^\d{10}$/.test(data.codEstudiante)) {
+        return "El código de postulante debe tener exactamente 10 dígitos.";
     }
 
     if (!/^\d{9}$/.test(data.phone)) {
@@ -82,7 +103,7 @@ app.use(bodyParser.json());
 
 // Ruta para guardar contacto
 app.post("/api/contacto", async (req, res) => {
-    const datosContacto = sanitizeContacto(req.body);
+    const datosContacto = prepareContacto(sanitizeContacto(req.body));
     console.log("📨 Datos recibidos desde el formulario:", datosContacto);
 
     const validationError = validarContacto(datosContacto);
@@ -91,13 +112,17 @@ app.post("/api/contacto", async (req, res) => {
     }
 
     try {
-        const existe = await Contacto.findOne({
-            where: { codEstudiante: datosContacto.codEstudiante },
-        });
+        const existe = isPublicoGeneral(datosContacto.ciclo)
+            ? await Contacto.findOne({ where: { email: datosContacto.email } })
+            : await Contacto.findOne({
+                  where: { codEstudiante: datosContacto.codEstudiante },
+              });
 
         if (existe) {
             return res.status(409).json({
-                message: "Este estudiante ya está registrado.",
+                message: isPublicoGeneral(datosContacto.ciclo)
+                    ? "Este correo ya está registrado."
+                    : "Este estudiante ya está registrado.",
             });
         }
 
