@@ -25,8 +25,7 @@ const getActivityMeta = (name = "") => {
   if (n.includes("ceremonia") || n.includes("clausura")) return { type: "keynote", speaker: "Comité Organizador" };
   if (n.includes("break") || n.includes("café")) return { type: "break", speaker: "" };
   if (n.includes("campeonato") || n.includes("deportivo")) return { type: "networking", speaker: "Delegados de Deportes" };
-  if (n.includes("tecnología")) return { type: "talk", speaker: "Ponente: Ing. Jair Manrique" };
-  if (n.includes("blandas")) return { type: "talk", speaker: "Ponente de Habilidades Blandas" };
+  if (n.includes("tecnología") || n.includes("inteligencia artificial")) return { type: "talk", speaker: "Ponente: Ing. Jair Manrique" };
   if (n.includes("conferencia") || n.includes("magistral")) return { type: "talk", speaker: "Ponente: Lic. Ivo Yance" };
   return { type: "talk", speaker: "" };
 };
