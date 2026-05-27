@@ -78,7 +78,12 @@
     {
       "icon": "fa fa-users",
       "name": "Break",
-      "text": "10:30 am - 10:50 am - Auditorio de la Casa de la Cultura."
+      "text": "10:30 am - 10:40 am - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-users",
+      "name": "Reconocimiento a Ingenieros Destacados",
+      "text": "10:40 am - 10:50 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-coffee",
