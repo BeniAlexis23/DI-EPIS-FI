@@ -191,6 +191,7 @@ export const Contact = () => {
                       <option value="V CICLO">Estudiante - V</option>
                       <option value="VII CICLO">Estudiante - VII</option>
                       <option value="IX CICLO">Estudiante - IX</option>
+                      <option value="EGRESADO">Egresado</option>
                       <option value={PUBLICO_GENERAL}>Público general</option>
                     </select>
                   </div>
