@@ -22,10 +22,10 @@ export const Header = (props) => {
                 </p>
                 <div className="hero-buttons-container">
                   <a href="/registro" className="btn btn-custom btn-lg">
-                    Ponencias
+                    Inscripción a ponencias
                   </a>
                   <a href="/deportes" className="btn btn-custom btn-lg">
-                    Deportes
+                    Inscripción a deportes
                   </a>
                 </div>
                 <div className="hero-glass-grid" aria-hidden="true">

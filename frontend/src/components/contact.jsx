@@ -161,7 +161,7 @@ export const Contact = () => {
                     }`}
                 >
                   <div className="form-group field-name">
-                    <label htmlFor="name">Nombres completos</label>
+                    <label htmlFor="name">Nombres</label>
                     <input
                       type="text"
                       id="name"

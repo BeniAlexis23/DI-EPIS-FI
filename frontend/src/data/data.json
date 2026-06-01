@@ -5,7 +5,7 @@
     "date": "10/06/2026"
   },
   "About": {
-    "paragraph": "El 8 de junio se celebra en el Perú el Día del Ingeniero, una fecha especial para reconocer la labor de los profesionales que, con creatividad, conocimiento y compromiso, contribuyen al desarrollo del país. En este día se rinde homenaje a quienes, desde las diversas ramas de la ingeniería, impulsan soluciones innovadoras y construyen un futuro más sostenible y tecnológico. Al igual que el año pasado, el día 05 de Junio del 2025, la Escuela Profesional de Ingeniería de Sistemas de la UNDC llevará a cabo un evento de conmemoración dirigido a docentes, estudiantes, egresados y personal administrativo, reafirmando su compromiso con la excelencia y el orgullo sistémico.",
+    "paragraph": "El 08 de junio se celebra en el Perú el Día del Ingeniero, una fecha especial para reconocer la labor de los profesionales que, con creatividad, conocimiento y compromiso, contribuyen al desarrollo del país. En este día se rinde homenaje a quienes, desde las diversas ramas de la ingeniería, impulsan soluciones innovadoras y construyen un futuro más sostenible y tecnológico. Al igual que el año pasado, el día 05 de Junio del 2025, la Escuela Profesional de Ingeniería de Sistemas de la UNDC llevará a cabo un evento de conmemoración dirigido a docentes, estudiantes, egresados y personal administrativo, reafirmando su compromiso con la excelencia y el orgullo sistémico.",
     "Why": ["Ceremonia de conmemoración.", "Ponencias especializadas."],
     "Why2": ["Reconocimientos.", "Deportes."]
   },
@@ -97,7 +97,7 @@
     },
     {
       "icon": "fa fa-futbol-o",
-      "name": "Camperonato Deportivo",
+      "name": "Campeonato Deportivo",
       "text": "2:00 pm - 08:00 pm - Campo Deportivo del Fundo Don Luis."
     }
   ],

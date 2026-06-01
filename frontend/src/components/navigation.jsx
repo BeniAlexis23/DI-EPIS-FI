@@ -111,7 +111,7 @@ export const Navigation = () => {
             </li>
             <li>
               <a href="/registro">
-                Registro
+                Inscripción
               </a>
             </li>
 

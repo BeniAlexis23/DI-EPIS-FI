@@ -37,7 +37,7 @@ export const Services = (props) => {
         <div className="section-title section-title--schedule">
           <h2>Cronograma de Actividades</h2>
           <p>
-            Programación oficial del evento · 10 de junio de 2025 · Casa de la
+            Programación oficial del evento · 10 de junio de 2026 · Casa de la
             Cultura
           </p>
         </div>
