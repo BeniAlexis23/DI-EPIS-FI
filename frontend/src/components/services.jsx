@@ -22,10 +22,11 @@ const parseActivityText = (text = "") => {
 const getActivityMeta = (name = "") => {
   const n = name.toLowerCase();
   if (n.includes("recepción") || n.includes("registro")) return { type: "break", speaker: "" };
-  if (n.includes("ceremonia") || n.includes("clausura") || n.includes("reconocimiento")) return { type: "keynote", speaker: "Comité Organizador" };
+  if (n.includes("ceremonia") || n.includes("clausura") || n.includes("reconocimiento") || n.includes("discurso")) return { type: "keynote", speaker: "Comité Organizador" };
   if (n.includes("break") || n.includes("café")) return { type: "break", speaker: "" };
   if (n.includes("campeonato") || n.includes("deportivo")) return { type: "networking", speaker: "Delegados de Deportes" };
   if (n.includes("tecnología") || n.includes("inteligencia artificial")) return { type: "talk", speaker: "Ponente: Ing. Jair Manrique" };
+  if (n.includes("educación") || n.includes("visión artificial")) return { type: "talk", speaker: "Ponente: Dr. Freddy Huayta" };
   if (n.includes("conferencia") || n.includes("magistral")) return { type: "talk", speaker: "Ponente: Lic. Ivo Yance" };
   return { type: "talk", speaker: "" };
 };

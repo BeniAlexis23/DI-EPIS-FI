@@ -19,6 +19,11 @@
       "name": "Lic. Yvo Yance",
       "description": "Comunicador, especialista en marketing estratégico y experto facilitador de experiencias de aprendizaje efectivas, vivenciales y lúdicas para públicos diversos. Desde hace más de una década, contribuye con universidades e institutos brindando a sus estudiantes conocimientos sobre marketing, comunicación y liderazgo. Asimismo, apoya a organizaciones en el fortalecimiento de su competitividad dentro de sus industrias y mercados, mediante la investigación y el análisis de clientes y consumidores. Esto le permite impulsar culturas corporativas orientadas al éxito, la innovación y el cambio. Su sello personal se caracteriza por el carisma, la energía y la pasión con la que desarrolla cada proyecto, cualidades que le han permitido implementar iniciativas académicas, ganar concursos, colaborar en campañas sociales y obtener una beca del gobierno central para realizar una certificación en Innovación y Marketing en Esade. Lo inspira la idea de que todas las personas pueden aprender y mejorar cada día; por ello, está comprometido en servir y aportar valor, acercando a las organizaciones a sus clientes, motivando a sus equipos de trabajo y contribuyendo al crecimiento de sus ventas.",
       "image": "img/team/06.webp"
+    },
+    {
+      "name": "Dr. Freddy Huayta",
+      "description": "Docente investigador RENACYT. Docente de pre y posgrado en la Universidad Nacional de Huancavelica, asimismo, docente invitado de posgrado en diversas universidades de Perú. Magister en Ingeniería de Sistemas con mención en Gerencia de Sistemas Empresariales por la Universidad Nacional del Centro del Perú. Doctor en Ingeniería de Sistemas por la Universidad Nacional del Centro del Perú. Egresado de Maestría en Educación con mención en Docencia y Gestión Educativa. Consultor en Tecnologías de la Información y Comunicación. Cursos de especialización en inteligencia artificial y visión artificial certificado por centro de estudios Dive in Learning, México.",
+      "image": "img/team/07.webp"
     }
   ],
   "Gallery": [
@@ -68,32 +73,37 @@
     {
       "icon": "fa fa-graduation-cap",
       "name": "Ceremonia Central por el Día del Ingeniero",
-      "text": "09:00 am - 09:30 am - Auditorio de la Casa de la Cultura."
+      "text": "09:00 am - 09:15 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-lock",
       "name": "Conferencia: Inteligencia Artificial, Soberanía Digital y Datos",
-      "text": "09:30 am - 10:30 am - Auditorio de la Casa de la Cultura."
+      "text": "09:15 am - 10:30 am - Auditorio de la Casa de la Cultura."
     },
     {
-      "icon": "fa fa-users",
-      "name": "Break",
-      "text": "10:30 am - 10:40 am - Auditorio de la Casa de la Cultura."
-    },
-    {
-      "icon": "fa fa-users",
-      "name": "Reconocimiento a Ingenieros Destacados",
-      "text": "10:40 am - 10:50 am - Auditorio de la Casa de la Cultura."
+      "icon": "fa fa-lock",
+      "name": "Conferencia: Transformando la Educación Superior con Visión Artificial",
+      "text": "10:30 am - 11:00 am - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-coffee",
       "name": "Conferencia: Habilidades más allá del Prompt",
-      "text": "10:50 am - 11:50 am - Auditorio de la Casa de la Cultura."
+      "text": "11:00 am - 11:50 am - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-graduation-cap",
+      "name": "Discurso Central por el Día del Ingeniero",
+      "text": "11:50 am - 12:00 pm - Auditorio de la Casa de la Cultura."
+    },
+    {
+      "icon": "fa fa-users",
+      "name": "Reconocimiento a Ingenieros Destacados",
+      "text": "12:00 pm - 12:15 pm - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-shield",
       "name": "Clausura del Evento Académico",
-      "text": "11:50 am - 12:05 pm - Auditorio de la Casa de la Cultura."
+      "text": "12:15 pm - 12:20 pm - Auditorio de la Casa de la Cultura."
     },
     {
       "icon": "fa fa-futbol-o",
