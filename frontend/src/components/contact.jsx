@@ -21,7 +21,7 @@ const getRequiredFieldLabels = (ciclo) => {
   };
 
   if (requiresInstitutionalCode(ciclo)) {
-    fields.institutionalCode = "Código de postulante";
+    fields.institutionalCode = "Código de estudiante";
   }
 
   return fields;
@@ -62,7 +62,7 @@ const getValidationMessage = (data) => {
     requiresInstitutionalCode(data.ciclo) &&
     !/^\d{10}$/.test(data.institutionalCode.trim())
   ) {
-    return "El código de postulante debe tener exactamente 10 dígitos.";
+    return "El código de estudiante debe tener exactamente 10 dígitos.";
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) {
@@ -213,7 +213,7 @@ export const Contact = () => {
                   {showInstitutionalCode && (
                     <div className="form-group field-code">
                       <label htmlFor="institutionalCode">
-                        Código de postulante
+                        Código de estudiante
                       </label>
                       <input
                         type="text"
