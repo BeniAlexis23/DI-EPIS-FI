@@ -8,7 +8,7 @@ import { Gallery } from "./components/gallery";
 import { Team } from "./components/Team";
 import { Contact } from "./components/contact";
 import { RegistrationHero } from "./components/registrationHero";
-import { SportsRegistration } from "./components/sportsRegistration";
+import { ClosedRegistrationPage } from "./components/closedRegistrationPage";
 import { Footer } from "./components/footer";
 import JsonData from "./data/data.json";
 import "./App.css";
@@ -101,7 +101,7 @@ const App = () => {
             titleStrong="Deportes"
           />
         </div>
-        <SportsRegistration />
+        <ClosedRegistrationPage />
         <Footer />
       </div>
     );

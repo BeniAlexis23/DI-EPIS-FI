@@ -41,6 +41,17 @@ export const showFormInfo = (title, text) =>
     iconColor: "#4ea6ff",
   });
 
+export const showRegistrationClosed = () =>
+  fireAlert({
+    icon: "info",
+    title: "Inscripciones cerradas",
+    text: "Las inscripciones ya se cerraron, nos vemos el año próximo.",
+    confirmButtonText: "Entendido",
+    allowOutsideClick: false,
+    allowEscapeKey: false,
+    iconColor: "#f0c76a",
+  });
+
 export const showFormError = (title, text) =>
   fireAlert({
     icon: "error",

@@ -24,7 +24,7 @@ export const Header = (props) => {
                   <a href="/registro" className="btn btn-custom btn-lg">
                     Inscripción a ponencias
                   </a>
-                  <a href="https://deportes.episundc.pe/" target="_blank" rel="noopener noreferrer" className="btn btn-custom btn-lg">
+                  <a href="/deportes" target="_blank" rel="noopener noreferrer" className="btn btn-custom btn-lg">
                     Inscripción a deportes
                   </a>
                 </div>

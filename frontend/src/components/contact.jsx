@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   showFormError,
   showFormInfo,
+  showRegistrationClosed,
   showFormSuccess,
   showFormWarning,
 } from "../utils/formAlerts";
 
+const REGISTRATIONS_CLOSED = true;
 const PUBLICO_GENERAL = "General";
 
 const requiresInstitutionalCode = (ciclo) =>
@@ -75,7 +77,15 @@ const getValidationMessage = (data) => {
 export const Contact = () => {
   const [formData, setFormData] = useState(initialState);
 
+  useEffect(() => {
+    if (REGISTRATIONS_CLOSED) {
+      showRegistrationClosed();
+    }
+  }, []);
+
   const handleChange = (e) => {
+    if (REGISTRATIONS_CLOSED) return;
+
     const { name, value } = e.target;
 
     if (name === "institutionalCode") {
@@ -101,6 +111,11 @@ export const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (REGISTRATIONS_CLOSED) {
+      showRegistrationClosed();
+      return;
+    }
 
     const validationMessage = getValidationMessage(formData);
 
@@ -149,7 +164,7 @@ export const Contact = () => {
       <div className="container registration-form-container">
         <div className="row registration-content-grid">
           <div className="col-md-8">
-            <div className="registration-form-shell registration-animate">
+            <div className={`registration-form-shell registration-animate ${REGISTRATIONS_CLOSED ? "registration-form-shell--closed" : ""}`}>
               <form name="sentMessage" onSubmit={handleSubmit}>
                 <div className="form-intro">
                   <span>Datos personales</span>
@@ -169,6 +184,7 @@ export const Contact = () => {
                       className="form-control"
                       placeholder="Nombres Completos"
                       required
+                      disabled={REGISTRATIONS_CLOSED}
                       value={formData.name}
                       onChange={handleChange}
                     />
@@ -181,6 +197,7 @@ export const Contact = () => {
                       name="ciclo"
                       className="form-control"
                       required
+                      disabled={REGISTRATIONS_CLOSED}
                       value={formData.ciclo}
                       onChange={handleChange}
                     >
@@ -205,6 +222,7 @@ export const Contact = () => {
                       className="form-control"
                       placeholder="Apellido Paterno"
                       required
+                      disabled={REGISTRATIONS_CLOSED}
                       value={formData.lastnamePaterno}
                       onChange={handleChange}
                     />
@@ -225,6 +243,7 @@ export const Contact = () => {
                         placeholder="10 dígitos"
                         required
                         maxLength={10}
+                        disabled={REGISTRATIONS_CLOSED}
                         value={formData.institutionalCode}
                         onChange={handleChange}
                       />
@@ -240,6 +259,7 @@ export const Contact = () => {
                       className="form-control"
                       placeholder="Apellido Materno"
                       required
+                      disabled={REGISTRATIONS_CLOSED}
                       value={formData.lastnameMaterno}
                       onChange={handleChange}
                     />
@@ -253,6 +273,7 @@ export const Contact = () => {
                       name="email"
                       className="form-control"
                       required
+                      disabled={REGISTRATIONS_CLOSED}
                       value={formData.email}
                       onChange={handleChange}
                     />
@@ -266,9 +287,22 @@ export const Contact = () => {
                       : "Antes de enviar, verifica tu correo. Estos datos se usarán para confirmar tu registro y emitir certificados."}
                   </span>
                 </div>
+                {REGISTRATIONS_CLOSED && (
+                  <div className="registration-closed-inline">
+                    <i className="fa fa-lock" aria-hidden="true"></i>
+                    <span>
+                      Las inscripciones ya se cerraron, nos vemos el año
+                      próximo.
+                    </span>
+                  </div>
+                )}
                 <div id="success"></div>
-                <button type="submit" className="btn btn-custom btn-lg">
-                  Enviar
+                <button
+                  type="submit"
+                  className="btn btn-custom btn-lg"
+                  disabled={REGISTRATIONS_CLOSED}
+                >
+                  {REGISTRATIONS_CLOSED ? "Enviar" : "Enviar"}
                 </button>
               </form>
             </div>

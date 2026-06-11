@@ -2331,6 +2331,94 @@ body.gallery-modal-open {
   margin-top: 2px;
 }
 
+.registration-form-shell--closed input,
+.registration-form-shell--closed select,
+.registration-form-shell--closed button {
+  cursor: not-allowed;
+}
+
+.registration-form-shell--closed .form-control {
+  opacity: 0.72;
+}
+
+.registration-closed-inline {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 18px 0 0;
+  padding: 14px 16px;
+  color: rgba(238, 246, 255, 0.9);
+  border: 1px solid rgba(240, 199, 106, 0.32);
+  border-radius: 8px;
+  background: rgba(240, 199, 106, 0.1);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.registration-closed-inline i {
+  color: #f0c76a;
+  margin-top: 2px;
+}
+
+.registration-form-shell--closed .btn-custom[disabled] {
+  color: rgba(238, 246, 255, 0.74);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: none;
+}
+
+.closed-registration-section {
+  min-height: 520px;
+  padding: 96px 0;
+  display: flex;
+  align-items: center;
+  background: rgba(7, 17, 31, 0.5);
+}
+
+.closed-registration-card {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 42px;
+  text-align: center;
+  border: 1px solid rgba(78, 166, 255, 0.22);
+  border-radius: 8px;
+  background: linear-gradient(
+    135deg,
+    rgba(8, 21, 36, 0.96),
+    rgba(8, 28, 48, 0.9)
+  );
+  box-shadow: 0 26px 78px rgba(0, 0, 0, 0.32);
+}
+
+.closed-registration-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+  margin-bottom: 16px;
+  padding: 7px 14px;
+  color: #f0c76a;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 1.3px;
+  text-transform: uppercase;
+  border: 1px solid rgba(240, 199, 106, 0.32);
+  border-radius: 999px;
+  background: rgba(240, 199, 106, 0.08);
+}
+
+.closed-registration-card h2 {
+  display: inline-block;
+  margin-bottom: 18px;
+}
+
+.closed-registration-card p {
+  max-width: 620px;
+  margin: 0 auto 26px;
+  color: rgba(238, 246, 255, 0.82);
+  font-size: 17px;
+}
+
 .sports-form-shell {
   width: 100%;
   height: auto;
